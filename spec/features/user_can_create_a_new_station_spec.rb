@@ -6,9 +6,9 @@ describe "When a user visits the new station path" do
 
     fill_in "station[name]", with: "My House"
     fill_in "station[dock_count]", with: "1"
-    fill_in "station[installation_date]", with: "9/27/2016"
-    fill_in "city", with: "Littleton"
+    fill_in "station[installation_date]", with: "March 3, 2000"
     click_on "Submit"
+    
 
     station = Station.find_by(name: "My House")
     expect(current_path).to eq("/stations/#{station.id}")
