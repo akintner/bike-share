@@ -1,7 +1,5 @@
 class Station < ActiveRecord::Base
   validates :name, presence: true
-  validates :dock_count, presence: true
-  validates :city, presence: true
+  validates :dock_count, numericality: { only_integer: true }
   validates :installation_date, presence: true
-  
 end
