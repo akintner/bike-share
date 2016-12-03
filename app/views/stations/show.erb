@@ -1,10 +1,10 @@
 <h1 class="show-station-name"><%= @station.name %></h1>
 <p class="show-station-dock-count"><%= @station.dock_count %></p>
-<pclass="show-station-installation-date"><%= @station.installation_date %></p>
+<p class="show-station-installation-date"><%= @station.installation_date %></p>
 
 <form action="/stations/<%= @station.id %>" method="POST">
   <div class="form-group">
-    <input class="button btn btn-primary" type="submit" value="delete"/>
+    <input class="button btn btn-primary" type="submit" value="Delete"/>
     <input type="hidden" name="_method" value="DELETE">
   </div>
 </form>

@@ -5,7 +5,7 @@
   <h2><a class="station-name" href="/stations/<%=station.id%>"><%= station.name %></a></h2>
   <p><a class="button btn btn-primary" href="/stations/<%= station.id %>/edit">Update</a></p>
   <form action='/stations/<%= station.id %>' method="POST">
-    <input class="button btn btn-primary" type="submit" value="delete"/>
+    <input class="button btn btn-primary" type="submit" value="Delete"/>
     <input type="hidden" name="_method" value="DELETE">
   </form>
 </div>

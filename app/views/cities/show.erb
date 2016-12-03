@@ -1,0 +1,8 @@
+<h1><%= @city.name %></h1>
+<p><a href="/cities/<%= @city.id %>/edit">Update city</a></p>
+
+<form action="/cities/<%= @city.id %>" method="POST">
+  <input type="submit" value="Delete"/>
+  <input type="hidden" name="_method" value="DELETE">
+</form>
+
