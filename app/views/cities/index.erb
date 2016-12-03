@@ -1,5 +1,6 @@
 <% @cities.each do |city| %>
   <div id="city_<%= city.id %>">
     <p><%= city.name %></p>
+    <p><a href="/cities/<%= city.id %>/edit">Update</a></p>
   </div>
 <% end %>

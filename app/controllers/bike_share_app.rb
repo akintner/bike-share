@@ -54,4 +54,15 @@ class BikeShareApp < Sinatra::Base
     erb :"/cities/show"
   end
 
+  get '/cities/:id/edit' do
+    @city = City.find(params[:id])
+    erb :"/cities/edit"
+  end
+
+  put '/cities/:id' do
+    city = City.find(params[:id])
+    city.update(params[:city])
+    redirect "/cities/#{city.id}"
+  end
+
 end
