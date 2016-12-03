@@ -1,7 +1,28 @@
+<h1>Create a New Station</h1>
+
 <form action="/stations" method="post">
-  <p>Enter a new station:</p>
-  <input type="text" name="station[name]" placeholder="name"/><br/>
-  <input type="number" step="1" name="station[dock_count]" placeholder="dock count"/><br/>
-  <input type="date" name="station[installation_date]" placeholder="installation date"><br/>
-  <input type="submit" value="Submit"/>
+  <div class="form-group row">
+    <label for="station[name]" class="new-station-prompt">Station Name:</label>
+    <input type="text" name="station[name]" placeholder="name"/>
+  </div>
+  <div class="form-group row">
+    <label for="station[dock_count]" class="new-station-prompt">Dock Count:</label>
+    <input type="number" step="1" name="station[dock_count]" placeholder="dock count"/>
+  </div>
+  <div class="form-group row">
+    <label for="station[installation_date]" class="new-station-prompt">Installation Date:</label>
+    <input type="date" name="station[installation_date]" placeholder="installation date">
+  </div>
+  <div class="form-group row">
+    <label for="city" class="new-station-prompt">Choose a city:</label>
+    <input type="text" name="city" list="cities">
+    <datalist id="cities">
+      <option value="San Francisco" />
+      <option value="Milbrae" />
+      <option value="Daly City" />
+    </datalist>
+  </div>
+
+  <input class="button" type="submit" value="Submit"/>
+</div>
 </form>
