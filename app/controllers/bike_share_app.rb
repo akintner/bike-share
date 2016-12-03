@@ -35,4 +35,9 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+  get '/cities' do
+    @cities = City.all
+    erb :"cities/index"
+  end
+
 end
