@@ -1,0 +1,10 @@
+<h1><%= @station.name %></h1>
+<p><%= @station.dock_count %></p>
+<p><%= @station.installation_date %></p>
+
+<form action="/stations/<%= @station.id %>" method="POST">
+  <input type="submit" value="delete"/>
+  <input type="hidden" name="_method" value="DELETE">
+</form>
+
+<p><a href="/stations/<%= @station.id %>/edit">Update station</a></p>
