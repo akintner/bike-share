@@ -1,3 +1,11 @@
+/*~~~~~~~ GENERAL STYLES ~~~~~~~*/
+.button {
+  background-color: none;
+  border: 2px solid #fff;
+  padding: 10px 15px 10px 15px;
+}
+
+/* ~~~~~~~ LAYOUT ~~~~~~~*/
 body {
   background: #B993D6; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #B993D6, #8CA6DB);
