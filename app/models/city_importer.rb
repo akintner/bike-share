@@ -6,11 +6,11 @@ class CityImporter
 
   def initialize(filename)
     @filename = filename
-    @number_of_lines = `wc -l #{filename}`
+    @number_of_lines = `wc -l #{filename}`.to_i
   end
 
   def import
-    bar = ProgressBar.create(title: "Cities", :total => number_of_lines.to_i)
+    bar = ProgressBar.create(title: "Cities", total: number_of_lines)
 
     City.transaction do
       CSV.foreach(filename, headers: true) do |row|
