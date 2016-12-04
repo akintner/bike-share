@@ -1,5 +1,9 @@
+<h1 class="edit-city-page-title">Edit City</h1>
+
 <form action="/cities/<%= @city.id %>" method="POST">
   <input type="hidden" name="_method" value="PUT" />
-  <input type="text" name="city[name]" value=<%= @city.name %> />
-  <input type="submit" value="Update city" />
+  <div class="form-gourp row">
+    <input class="form-control" type="text" name="city[name]" value=<%= @city.name %> />
+    <input class"form-control btn btn-primary button" type="submit" value="Update city" />
+  </div>
 </form>

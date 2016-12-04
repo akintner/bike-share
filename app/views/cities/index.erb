@@ -1,9 +1,11 @@
+<h1 class="city-index-page-title">All Cities</h1>
+
 <% @cities.each do |city| %>
-  <div id="city_<%= city.id %>">
-    <p><a href="/cities/<%= city.id %>"><%= city.name %></a></p>
-    <p><a href="/cities/<%= city.id %>/edit">Update</a></p>
+  <div class="city-info" id="city_<%= city.id %>">
+    <h2><a class="city-name" href="/cities/<%= city.id %>"><%= city.name %></a></h2>
+    <p><a class="button btn btn-primary" href="/cities/<%= city.id %>/edit">Update</a></p>
     <form action='/cities/<%= city.id %>' method="POST">
-      <input type="submit" value="Delete"/>
+      <input class="button btn btn-primary" type="submit" value="Delete"/>
       <input type="hidden" name="_method" value="DELETE">
     </form>
   </div>
