@@ -31,4 +31,14 @@ describe "Station" do
       expect(station).not_to be_valid
     end
   end
+
+  context "relationships" do
+    it "belongs to a city" do
+      city = City.create(name: "Chicago")
+      station = Station.create(name: "Downtown", dock_count: 12, installation_date: Date.today, city: city)
+
+      expect(station.city.name).to eq("Chicago")
+    end
+  end
+
 end
