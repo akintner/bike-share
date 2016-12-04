@@ -2,12 +2,10 @@ require 'csv'
 
 class CityImporter
   attr_reader :filename,
-              :cities,
               :number_of_lines
 
   def initialize(filename)
     @filename = filename
-    @cities = []
     @number_of_lines = `wc -l #{filename}`
   end
 
