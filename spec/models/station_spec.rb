@@ -41,4 +41,76 @@ describe "Station" do
     end
   end
 
+  context "analytics" do
+
+    it "can find total count of stations" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+
+      expect(Station.total).to eq(2)
+    end
+
+    it "can find average available bikes" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+      Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
+
+      expect(Station.average_available_bikes).to eq(40)
+    end
+
+    it "can find the most available bikes at station" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+      Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
+      Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
+
+      expect(Station.most_bikes_available_at_station).to eq(50)
+    end
+
+    it "can find specified number of stations with most bikes" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+      Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
+      Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
+
+      expect(Station.stations_with_most_bikes(2)).to eq([4,3])
+    end
+
+    it "can find specifited number of stations with fewest bikes" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+      Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
+      Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
+
+      expect(Station.stations_with_fewest_bikes(2)).to eq([1,2])
+    end
+
+    it "can find fewest number of bikes at station" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+      Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
+      Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
+
+      expect(Station.fewest_bikes_available_at_station).to eq(35)
+    end
+
+
+    it "can find most recently installed station" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+      Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
+      Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
+
+      expect(Station.most_recently_installed).to eq(4)
+    end
+
+    it "can find oldest station" do
+      Station.create(name:"Polk Street", dock_count: 35, installation_date: "March 4, 2000")
+      Station.create(name:"Valencia", dock_count: 40, installation_date: "March 5, 2000")
+      Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
+      Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
+
+      expect(Station.oldest_station).to eq(1)
+    end
+  end
 end
