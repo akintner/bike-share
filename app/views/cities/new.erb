@@ -1,5 +1,11 @@
+<h1>Create a New City</h1>
+
+
 <form action="/cities" method="POST">
-  <p>Enter a new city:</p>
-  <input type="text" name="city[name]" placeholder="name"/>
-  <input type="submit" value="Submit" />
+  <div class="form-group row">
+    <label for="city[name]" class="new-city-prompt">
+    <p>Enter a new city:</p>
+    <input type="text" name="city[name]" placeholder="name"/>
+    <input class="button" type="submit" value="Submit" />
+  </div>
 </form>

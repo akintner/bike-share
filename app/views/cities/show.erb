@@ -1,8 +1,12 @@
-<h1><%= @city.name %></h1>
-<p><a href="/cities/<%= @city.id %>/edit">Update city</a></p>
+<h1 class="show-city-name"><%=  @city.name  %></h1>
 
 <form action="/cities/<%= @city.id %>" method="POST">
-  <input type="submit" value="Delete"/>
-  <input type="hidden" name="_method" value="DELETE">
+  <div class="form-group">
+    <input class="button btn btn-primary" type="submit" value="Delete"/>
+    <input type="hidden" name="_method" value="DELETE">
+  </div>
 </form>
+
+<p><a class="btn btn-primary button" href="/cities/<%= @city.id %>/edit">Update city</a></p>
+
 

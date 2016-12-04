@@ -16,10 +16,9 @@
   <div class="form-group row">
     <label for="city" class="new-station-prompt">Choose a city:</label>
     <input type="text" name="city" list="cities">
-    <datalist id="cities">
-      <option value="San Francisco" />
-      <option value="Milbrae" />
-      <option value="Daly City" />
+    <datalist id="cities" <% @cities.each do |city| %>
+      <option value="<%= city.name %>" />
+      <% end %>>
     </datalist>
   </div>
 
