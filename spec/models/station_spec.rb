@@ -73,7 +73,7 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.stations_with_most_bikes(2)).to eq([4,3])
+      expect(Station.stations_with_most_bikes(2).pluck(:id)).to eq([4,3])
     end
 
     it "can find specifited number of stations with fewest bikes" do
@@ -82,7 +82,7 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.stations_with_fewest_bikes(2)).to eq([1,2])
+      expect(Station.stations_with_fewest_bikes(2).pluck(:id)).to eq([1,2])
     end
 
     it "can find fewest number of bikes at station" do

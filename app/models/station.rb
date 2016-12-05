@@ -19,7 +19,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_most_bikes(number)
-    self.order("dock_count DESC").limit(number).pluck(:id)
+    self.order("dock_count DESC").limit(number)
   end
 
   def self.fewest_bikes_available_at_station
@@ -27,7 +27,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_fewest_bikes(number)
-    self.order("dock_count ASC").limit(number).pluck(:id)
+    self.order("dock_count ASC").limit(number)
   end
 
   def self.most_recently_installed
