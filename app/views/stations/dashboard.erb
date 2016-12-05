@@ -38,14 +38,12 @@
 
 <div class="stations-dashboard-newest">
 <h2>Most Recently Installed</h2>
-<% station = @stations.most_recently_installed %>
-<p><%= station.name %></p>
-<p>Installation Date: <%= station.installation_date %></p>
+<p><%= @stations.most_recently_installed_name %></p>
+<p>Installation Date: <%= @stations.most_recently_installed_date %></p>
 </div>
 
 <div class="stations-dashboard-oldest">
 <h2>Oldest Station</h2>
-<% station = @stations.oldest_station %>
-<p><%= station.name %></p>
-<p>Installation Date: <%= station.installation_date %></p>
+<p><%= @stations.oldest_station_name %></p>
+<p>Installation Date: <%= @stations.oldest_station_date %></p>
 </div>

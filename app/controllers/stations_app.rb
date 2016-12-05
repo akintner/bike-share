@@ -1,6 +1,6 @@
 class StationsApp < Sinatra::Base
   set :views, "#{settings.root}/../views"
-  set :public, "#{settings.root}/../public"
+  set :public_dir, "#{settings.root}/../public_dir"
   set :method_override, true
 
   get '/stations' do
@@ -20,6 +20,10 @@ class StationsApp < Sinatra::Base
 
   get '/stations-dashboard' do
     @stations = Station.all
+    @most_recently_installed_name
+    @most_recently_installed_date
+    @oldest_station_name
+    @oldest_station_date
     erb :"/stations/dashboard"
   end
 

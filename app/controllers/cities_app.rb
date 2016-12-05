@@ -1,6 +1,6 @@
 class CitiesApp < Sinatra::Base
   set :views, "#{settings.root}/../views"
-  set :public, "#{settings.root}/../public"
+  set :public_dir, "#{settings.root}/../public_dir"
   set :method_override, true
 
   get '/cities' do
