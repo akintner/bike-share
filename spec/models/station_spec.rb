@@ -101,7 +101,8 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.most_recently_installed).to eq(4)
+      station = Station.most_recently_installed.first
+      expect(station.id).to eq(4)
     end
 
     it "can find oldest station" do
@@ -110,7 +111,8 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.oldest_station).to eq(1)
+      station = Station.oldest_station.first
+      expect(station.id).to eq(1)
     end
   end
 end

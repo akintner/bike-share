@@ -31,11 +31,11 @@ class Station < ActiveRecord::Base
   end
 
   def self.most_recently_installed
-    self.order("installation_date DESC").limit(1).pluck(:id).first
+    self.order("installation_date DESC").limit(1)
   end
 
   def self.oldest_station
-    self.order("installation_date ASC").limit(1).pluck(:id).first
+    self.order("installation_date ASC").limit(1)
   end
 
 end
