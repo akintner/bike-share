@@ -1,3 +1,5 @@
+require 'pry'
+
 class BikeShareApp < Sinatra::Base
   set :method_override, true
 
@@ -12,7 +14,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
+    city = City.find_or_create_by(name: params[:city])
     station = Station.create(params[:station])
+    station.city_id = city.id
+    station.save
     redirect "/stations/#{station.id}"
   end
 
