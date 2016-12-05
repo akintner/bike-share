@@ -7,12 +7,13 @@ describe "When a user visits the new station path" do
     fill_in "station[name]", with: "My House"
     fill_in "station[dock_count]", with: "1"
     fill_in "station[installation_date]", with: "March 3, 2000"
-    db_type_select = find('datalist')
-    within(db_type_select) do
-      find('datalist[name="city"]').click
-      find('input.datalist')
-      find(text: 'San Francisco').click
-    end
+    find('datalist')
+    find(:css, 'datalist').click
+    find(:css, 'datalist#cities').click_on(id: "San Francisco")
+    # db_type_select = find('datalist')
+    # within(db_type_select) do
+    #   find('.new-station-prompt input.datalist', text: 'San Francisco').click
+    # end
     click_on "Submit"
     
 

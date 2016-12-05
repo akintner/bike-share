@@ -21,6 +21,9 @@ body {
   color: #eee;
 }
 
+#cities {
+  background-color: red;
+}
 /*FOOTER*/
 .footer {
   background-color: #222;
