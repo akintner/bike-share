@@ -1,0 +1,13 @@
+<h1>Enter weather condtions</h1>
+
+<form action="/conditions" method="POST">
+  <input type="date" name="condition[measurement_date]" />
+  <input type="number" name="condition[max_temperature_f]" />
+  <input type="number" name="condition[mean_temperature_f]" />
+  <input type="number" name="condition[min_temperature_f]" />
+  <input type="number" name="condition[humidity_percent]" />
+  <input type="number" name="condition[visibility_miles]" />
+  <input type="number" name="condition[mean_wind_speed_mph]" />
+  <input type="number" name="condition[precipitation_inches]" />
+  <input type="submit" value="Submit" />
+</form>
