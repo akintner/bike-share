@@ -143,6 +143,17 @@ class BikeShareApp < Sinatra::Base
     erb :"/conditions/show"
   end
 
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/edit"
+  end
+
+  put '/conditions/:id' do
+    condition = Condition.find(params[:id])
+    condition.update(params[:condition])
+    redirect "/conditions/#{condition.id}"
+  end
+
   get '/trips-dashboard' do
     @trips = Trip.all
     erb :"/trips/dashboard"
