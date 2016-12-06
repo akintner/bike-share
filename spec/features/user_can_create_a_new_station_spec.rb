@@ -9,7 +9,7 @@ describe "When a user visits the new station path" do
     fill_in "station[installation_date]", with: "March 3, 2000"
     fill_in "city", with: "San Francisco"
     click_on "Submit"
-    
+
 
     station = Station.find_by(name: "My House")
     expect(current_path).to eq("/stations/#{station.id}")

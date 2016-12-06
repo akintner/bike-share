@@ -15,6 +15,8 @@ class StationsApp < Sinatra::Base
 
   post '/stations' do
     station = Station.create(params[:station])
+    binding.pry
+    city = City.find_or_create()
     redirect "/stations/#{station.id}"
   end
 
