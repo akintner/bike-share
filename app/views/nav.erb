@@ -1,19 +1,30 @@
 <nav class="navbar">
-  <a class="navbar-brand" href="#">
-    <img src="../bike_share_white.svg" alt="bike share logo" height="100px"/>
-  </a>
+  <a class="navbar-logo" href="#"><img src="../bike_share_white.svg" height="78px"></a>
   <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home</a>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stations<span class="caret"></span></a>
+      <div class="dropdown-menu">
+        <a href="/stations-dashboard" class="dropdown-item">Dashboard</a>
+        <a href="/stations" class="dropdown-item">All Stations</a>
+        <a href="/stations/new" class="dropdown-item">Add New Station</a>
+      </div>
     </li>
-    <li class="nav-item">
-     <a class="nav-link" href="#">Link</a>
-   </li>
-   <li class="nav-item">
-     <a class="nav-link" href="#">Link</a>
-   </li>
-   <li class="nav-item">
-     <a class="nav-link" href="#">Link</a>
-   </li>
+    <li class="nav-item"><a href="/cities">Cities</a></li>  
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trips <span class="caret"></span></a>
+      <div class="dropdown-menu">
+        <a href="/trips-dashboard" class="dropdown-item">Dashboard</a>
+        <a href="/trips" class="dropdown-item">All Trips</a>
+        <a href="/trips/new" class="dropdown-item">Add New Trip</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Weather Conditions <span class="caret"></span></a>
+      <div class="dropdown-menu">
+        <a href="/conditions-dashboard" class="dropdown-item">Dashboard</a>
+        <a href="/conditions" class="dropdown-item">Weather Conditions</a>
+        <a href="/conditions/new" class="dropdown-item">Add New Weather Conditions</a>
+      </div>
+    </li>
   </ul>
 </nav>
