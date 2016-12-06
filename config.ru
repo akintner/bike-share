@@ -3,5 +3,4 @@ Bundler.require
 
 require File.expand_path('../config/environment',  __FILE__)
 
-run StationsApp
-use CitiesApp
+run BikeShareApp

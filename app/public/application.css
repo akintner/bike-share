@@ -1,7 +1,29 @@
 /*~~~~~~~ GENERAL STYLES ~~~~~~~*/
 .button {
-  background-color: none;
+  background-color: rgba(255, 255, 255, 0);
   border: 2px solid #fff;
+  border-radius: 0;
+  font-size: 12px;
+  color: whitesmoke;
+}
+
+.button:hover {
+  background-color: rgba(0,0,0,0.7);
+  border: 2px solid #fff;
+}
+.btn-update:hover {
+  border: 2px solid #65FFA8;
+  color: #65FFA8;
+}
+
+.btn-delete:hover {
+  border: 2px solid #FF5357;
+  color: #FF5357;
+}
+
+.btn-form {
+  display: inline-block;
+  float: right;
 }
 
 /* ~~~~~~~ LAYOUT ~~~~~~~*/
@@ -21,9 +43,6 @@ body {
   color: #eee;
 }
 
-#cities {
-  background-color: red;
-}
 /*FOOTER*/
 .footer {
   background-color: #222;
@@ -40,6 +59,8 @@ h1.station-index-page-title {}
 
 .station-info {
   background-color: rgba(255,255,255,0.3);
+  margin: 0 0 10px 0;
+  padding: 10px;
 }
 
 div.station-info:hover {
