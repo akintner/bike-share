@@ -1,0 +1,66 @@
+/*~~~~~~~ GENERAL STYLES ~~~~~~~*/
+.button {
+  background-color: none;
+  border: 2px solid #fff;
+}
+
+/* ~~~~~~~ LAYOUT ~~~~~~~*/
+body {
+  background: #B993D6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #B993D6, #8CA6DB);
+  background: -o-linear-gradient(right, #B993D6, #8CA6DB);
+  background: linear-gradient(to left, #B993D6, #8CA6DB); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+
+/* ~~~~~~~ NAVIGATION ~~~~~~~*/
+.navbar {
+  background-color: #222;
+}
+
+.nav-item {
+  color: #eee;
+}
+
+/*FOOTER*/
+.footer {
+  background-color: #222;
+}
+
+/* ~~~~~~~ STATION ~~~~~~~*/
+/*station new*/
+form {}
+.new-station-prompt {}
+.new-city-prompt {}
+
+/*station index*/
+h1.station-index-page-title {}
+
+.station-info {
+  background-color: rgba(255,255,255,0.3);
+}
+
+div.station-info:hover {
+  background-color: rgba(255,255,255,0.7);
+}
+div.city-info:hover {
+  background-color: rgba(255,255,255,0.7);
+}
+h2.station-name {}
+.station-id {}
+
+h2.city-name {}
+.city-id {}
+
+p.station-city {}
+p.station-coordinates {}
+
+/*station show*/
+.show-station-name {}
+.show-station-dock-count {}
+.show-station-installation-date {}
+
+.show-station-city {}
+.show-station-coordinates {}
+
+/*station edit*/
+.edit-station-page-title {}
