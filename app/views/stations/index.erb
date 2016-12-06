@@ -1,6 +1,6 @@
 <h1 class="station-index-page-title">All Stations</h1>
 
-<% @trips.each do |trip| %>
+<% @stations.each do |station| %>
 <div class="station-info" id="station_<%= station.id %>">
   <h2><a class="station-name" href="/stations/<%=station.id%>"><%= station.name %></a></h2>
   <p><a class="button btn btn-primary" href="/stations/<%= station.id %>/edit">Update</a></p>

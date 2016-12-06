@@ -3,11 +3,13 @@
 <form action="/trips/<%= @trip.id %>" method="POST">
   <input type="hidden" name="_method" value="PUT" />
   <div class="form-gourp row">
-    <input class="form-control" type="integer" name="trip[duration]" value="<%= @trip.duration %>" />
+    <input class="form-control" type="integer" name="trip[duration_in_seconds]" value="<%= @trip.duration_in_seconds %>" />
     <input class="form-control" type="date" name="trip[start_date]" value="<%= @trip.start_date %>" />
     <input class="form-control" type="datetime" name="trip[end_date]" value="<%= @trip.end_date %>" />
+    <input class="form-control" type="datetime" name="trip[start_station_id]" value="<%= @trip.start_station_id %>" />
+    <input class="form-control" type="datetime" name="trip[end_station_id]" value="<%= @trip.start_station_id %>" />
     <input class="form-control" type="integer" name="trip[bike_id]" value="<%= @trip.bike_id %>" />
     <input class="form-control" type="text" name="trip[subscription_type]" value="<%= @trip.subscription_type %>" />
-    <input class="form-control" type="integer" name="trip[zipcode]" value="<%= @trip.zipcode %>" />
+    <input class="form-control" type="integer" name="trip[zipcode_id]" value="<%= @trip.zipcode_id %>" />
     <input class"form-control btn btn-primary button" type="submit" value="Update trip" />
   </div>
