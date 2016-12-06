@@ -16,15 +16,16 @@ describe "When a user updates a station's information" do
       expect(find_field('station[dock_count]').value).to eq "11"
       expect(find_field('station[installation_date]').value).to eq "2001-03-06"
 
-      fill_in 'station[name]', with: "Windy City"
+      fill_in 'station[name]', with: "New York"
       fill_in 'station[dock_count]', with: 99
       fill_in 'station[installation_date]', with: 'March 13, 2010'
       click_on 'Update station'
 
       expect(page).to have_current_path "/stations/#{station_2.id}"
-      expect(page).to have_content "Windy City"
+      expect(page).to have_content "New York"
       expect(page).to have_content "99"
       expect(page).to have_content "2010-03-13"
+
 
       expect(page).not_to have_content "Detroit"
       expect(page).not_to have_content 11
