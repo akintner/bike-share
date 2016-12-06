@@ -1,5 +1,5 @@
 class Station < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :dock_count, numericality: { only_integer: true }
   validates :installation_date, presence: true
 
