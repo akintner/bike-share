@@ -1,0 +1,16 @@
+<h1 class="show-trip-id"><%= @trip.id %></h1>
+<p class="show-trip-duration"><%= @trip.duration %></p>
+<p class="show-trip-start-date"><%= @trip.start_date %></p>
+<p class="show-trip-end-date"><%= @trip.end_date %></p>
+<p class="show-trip-bike-id"><%= @trip.bike_id %></p>
+<p class="show-trip-subscription-type"><%= @trip.subscription_type %></p>
+<p class="show-trip-installation-date"><%= @trip.zipcode %></p>
+
+<form action="/trips/<%= @trip.id %>" method="POST">
+  <div class="form-group">
+    <input class="button btn btn-primary" type="submit" value="Delete"/>
+    <input type="hidden" name="_method" value="DELETE">
+  </div>
+</form>
+
+<a class="btn btn-primary button" href="/trips/<%= @trip.id %>/edit">Update trip</a>

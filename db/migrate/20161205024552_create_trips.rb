@@ -4,8 +4,8 @@ class CreateTrips < ActiveRecord::Migration[5.0]
       t.integer  :duration_in_seconds
       t.datetime :start_date
       t.datetime :end_date
-      t.integer  :start_station
-      t.integer  :end_station
+      t.integer  :start_station_id
+      t.integer  :end_station_id
       t.integer  :bike_id
       t.integer  :subscription_type
       t.integer  :zipcode_id

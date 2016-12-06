@@ -1,0 +1,39 @@
+<h1>Create a New Trip</h1>
+
+<form action="/trips" method="post">
+  <div class="form-group row">
+    <label for="trip[duration]" class="new-trip-prompt">Duration(in seconds):</label>
+    <input type="integer" name="trip[duration]" placeholder="duration"/>
+  </div>
+  <div class="form-group row">
+    <label for="trip[start_date]" class="new-trip-prompt">Start Date:</label>
+    <input type="datetime" name="trip[start_date]" placeholder="start date"/>
+  </div>
+  <div class="form-group row">
+    <label for="trip[end_date]" class="new-trip-prompt">End Date:</label>
+    <input type="datetime"  name="trip[end_date]" placeholder="end date"/>
+  </div>
+  <div class="form-group row">
+    <label for="trip[start_station]" class="new-trip-prompt">Start Station:</label>
+    <input type="integer"  name="trip[end_date]" placeholder="start station"/>
+  </div>
+  <div class="form-group row">
+    <label for="trip[end_date]" class="new-trip-prompt">End Station:</label>
+    <input type="integer"  name="trip[end_date]" placeholder="end date"/>
+  </div>
+  <div class="form-group row">
+    <label for="trip[bike_id]" class="new-trip-prompt">Bike ID:</label>
+    <input type="number" step="1" name="trip[bike_id]" placeholder="bike ID"/>
+  </div>
+  <div class="form-group row">
+    <label for="trip[subscription_type]" class="new-trip-prompt">Subscription Type:</label>
+    <input type="text" name="trip[subscription_type]" placeholder="subscription type"/>
+  </div>
+  <div class="form-group row">
+    <label for="trip[zipcode]" class="new-trip-prompt">Zipcode:</label>
+    <input type="integer" name="trip[installation_date]" placeholder="zipcode">
+  </div>
+
+  <input class="button" type="submit" value="Submit"/>
+</div>
+</form>
