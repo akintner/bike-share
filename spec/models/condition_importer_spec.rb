@@ -5,7 +5,7 @@ describe "Condition importer" do
   let(:good)  { './spec/fixtures/good_stations.csv'}
 
   context "unsuccessful imports" do
-    xit "does not import any conditions" do
+    it "does not import any conditions" do
       expect {
         ConditionImporter.new(bad).import
       }.to change { Condition.count }.by(0)
@@ -13,7 +13,7 @@ describe "Condition importer" do
   end
 
   context "successful imports" do
-    xit "imports all the unique conditions from the csv and saves to database" do
+    it "imports all the unique conditions from the csv and saves to database" do
       expect {
         ConditionImporter.new(good).import
       }.to change { Condition.count }.by(0)
