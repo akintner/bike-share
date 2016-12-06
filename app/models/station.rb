@@ -1,5 +1,5 @@
 class Station < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :dock_count, numericality: { only_integer: true }
   validates :installation_date, presence: true
 
@@ -21,7 +21,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_most_bikes(number)
-    self.order("dock_count DESC").limit(number).pluck(:id)
+    self.order("dock_count DESC").limit(number)
   end
 
   def self.fewest_bikes_available_at_station
@@ -29,15 +29,27 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_fewest_bikes(number)
-    self.order("dock_count ASC").limit(number).pluck(:id)
+    self.order("dock_count ASC").limit(number)
   end
 
-  def self.most_recently_installed
-    self.order("installation_date DESC").limit(1).pluck(:id).first
+  def self.most_recently_installed_name
+    station = self.order("installation_date DESC").limit(1).first
+    station.name
   end
 
-  def self.oldest_station
-    self.order("installation_date ASC").limit(1).pluck(:id).first
+  def self.most_recently_installed_date
+    station = self.order("installation_date DESC").limit(1).first
+    station.installation_date
+  end
+
+  def self.oldest_station_name
+    station = self.order("installation_date ASC").limit(1).first
+    station.name
+  end
+
+  def self.oldest_station_date
+    station = self.order("installation_date ASC").limit(1).first
+    station.installation_date
   end
 
 end

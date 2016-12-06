@@ -1,3 +1,5 @@
+require 'pry'
+
 class BikeShareApp < Sinatra::Base
   set :method_override, true
 
@@ -12,7 +14,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
+    city = City.find_or_create_by(name: params[:city])
     station = Station.create(params[:station])
+    station.city_id = city.id
+    station.save
     redirect "/stations/#{station.id}"
   end
 
@@ -32,7 +37,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do |id|
-    Station.update(params[:station])
+    station = Station.find(params[:id])
+    station.update(params[:station])
     redirect "/stations/#{id}"
   end
 
@@ -88,9 +94,8 @@ class BikeShareApp < Sinatra::Base
 
   post '/trips' do
     trip = Trip.create(params[:trip])
-    trip_info = params[:trip]
-    station1 = Station.find(trip_info['station_id'])
-    station2 = Station.find(params[:station_id])
+    station1 = Station.find(params[:trip][:start_station_id])
+    station2 = Station.find(params[:trip][:end_station_id])
     trip.start_station_id = station1.id
     trip.end_station_id = station2.id
     trip.save!
@@ -99,6 +104,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
+    @stations = Station.all
     erb :"/trips/show"
   end
 
@@ -107,7 +113,7 @@ class BikeShareApp < Sinatra::Base
     erb :"/trips/edit"
   end
 
-  put '/trips/:id' do
+  put '/trips/:id' do |id|
     trip = Trip.find(params[:id])
     trip.update(params[:trip])
     redirect "/trips/#{id}"
@@ -116,6 +122,30 @@ class BikeShareApp < Sinatra::Base
   delete '/trips/:id' do
     Trip.destroy(params[:id])
     redirect '/trips'
+  end
+
+  get '/conditions' do
+    @conditions = Condition.all.take(30)
+    erb :"/conditions/index"
+  end
+
+  get '/conditions/new' do
+    erb :"/conditions/new"
+  end
+
+  post '/conditions' do
+    condition = Condition.create(params[:condition])
+    redirect "/conditions/#{condition.id}"
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+    erb :"/conditions/show"
+  end
+
+  get '/trips-dashboard' do
+    @trips = Trip.all
+    erb :"/trips/dashboard"
   end
 
 end

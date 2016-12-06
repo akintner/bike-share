@@ -17,9 +17,9 @@
 
 <div class="stations-dashboard-most-bikes">
 <h2>Stations With Most Bikes</h2>
-<% @stations.stations_with_most_bikes(3).each do |id|%>
-<h3><%= @stations.find(id).name %></h3>
-<p>Docks: <%= @stations.find(id).dock_count %></p>
+<% @stations.stations_with_most_bikes(3).each do |station|%>
+<h3><%= station.name %></h3>
+<p>Docks: <%= station.dock_count %></p>
 <% end %>
 </div>
 
@@ -30,20 +30,20 @@
 
 <div class="stations-dashboard-fewest-bikes">
 <h2>Stations With Fewest Bikes</h2>
-<% @stations.stations_with_fewest_bikes(3).each do |id|%>
-<h3><%= @stations.find(id).name %></h3>
-<p>Docks: <%= @stations.find(id).dock_count %></p>
+<% @stations.stations_with_fewest_bikes(3).each do |station|%>
+<h3><%= station.name %></h3>
+<p>Docks: <%= station.dock_count %></p>
 <% end %>
 </div>
 
 <div class="stations-dashboard-newest">
 <h2>Most Recently Installed</h2>
-<p><%= @stations.find(@stations.most_recently_installed).name %></p>
-<p>Installation Date: <%= @stations.find(@stations.most_recently_installed).installation_date %></p>
+<p><%= @stations.most_recently_installed_name %></p>
+<p>Installation Date: <%= @stations.most_recently_installed_date %></p>
 </div>
 
 <div class="stations-dashboard-oldest">
 <h2>Oldest Station</h2>
-<p><%= @stations.find(@stations.oldest_station).name %></p>
-<p>Installation Date: <%= @stations.find(@stations.most_recently_installed).installation_date %></p>
+<p><%= @stations.oldest_station_name %></p>
+<p>Installation Date: <%= @stations.oldest_station_date %></p>
 </div>

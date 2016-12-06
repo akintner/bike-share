@@ -4,14 +4,14 @@ describe "Station" do
   context "attributes are validated" do
     it "validates presence of name" do
         station = Station.create(dock_count: 30,
-                                installation_date: "4/13/2000"
+                                installation_date: Date.today
                                 )
         expect(station).not_to be_valid
     end
 
     it "validates presence of dock_count" do
       station = Station.create(name:"Market Street",
-                            installation_date: "4/13/2000"
+                            installation_date: Date.today
                             )
       expect(station).not_to be_valid
     end
@@ -19,7 +19,7 @@ describe "Station" do
     it "validates dock_count is an integer" do
       station = Station.new(name: "Market Street",
                               dock_count: 1.7,
-                              installation_date: "4/13/2000"
+                              installation_date: Date.today
                               )
       expect(station).not_to be_valid
     end
@@ -73,7 +73,7 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.stations_with_most_bikes(2)).to eq([4,3])
+      expect(Station.stations_with_most_bikes(2).pluck(:id)).to eq([4,3])
     end
 
     it "can find specifited number of stations with fewest bikes" do
@@ -82,7 +82,7 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.stations_with_fewest_bikes(2)).to eq([1,2])
+      expect(Station.stations_with_fewest_bikes(2).pluck(:id)).to eq([1,2])
     end
 
     it "can find fewest number of bikes at station" do
@@ -101,7 +101,10 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.most_recently_installed).to eq(4)
+      station_name = Station.most_recently_installed_name
+      station_date = Station.most_recently_installed_date.to_s
+      expect(station_name).to eq("Mission Street")
+      expect(station_date).to eq("2000-03-07")
     end
 
     it "can find oldest station" do
@@ -110,7 +113,10 @@ describe "Station" do
       Station.create(name:"California Street", dock_count: 45, installation_date: "March 6, 2000")
       Station.create(name:"Mission Street", dock_count: 50, installation_date: "March 7, 2000")
 
-      expect(Station.oldest_station).to eq(1)
+      station_name = Station.oldest_station_name
+      station_date = Station.oldest_station_date.to_s
+      expect(station_name).to eq("Polk Street")
+      expect(station_date).to eq("2000-03-04")
     end
   end
 end

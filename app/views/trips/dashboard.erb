@@ -1,0 +1,64 @@
+<h1>Trip Dashboard</h1>
+
+<div class="trips-dashboard-total">
+<h2>Total Number of Trips</h2>
+<p><%= @trips.total %></p>
+</div>
+
+<div class="trips-dashboard-average">
+<h2>Average Duration of a Ride</h2>
+<p class="trip-dashboard-average"><%= @trips.average_duration_of_ride %></p>
+</div>
+
+<div class="trips-dashboard-max">
+<h2>Longest Ride</h2>
+<p><%= @trips.longest_ride %></p>
+</div>
+
+<div class="trips-dashboard-min">
+<h2>Shortest Ride</h2>
+<p><%= @trips.shortest_ride %></p>
+</div>
+
+<div class="trips-dashboard-most-rides-starting">
+<h2>Station with Most Rides Starting There</h2>
+<p><%= @trips.most_rides_starting %></p>
+</div>
+
+<div class="trips-dashboard-most-rides-ending">
+<h2>Station with Most Rides Ending There</h2>
+<p><%= @trips.most_rides_ending %></p>
+</div>
+
+<div class="trips-dashboard-month-by-month">
+<h2>Rides Per Month Each Year</h2>
+<p><%= @trips.rides_per_month %><%= @trips.rides_that_year %></p>
+</div>
+
+<div class="trips-dashboard-most-ridden-bike">
+<h2>Most Ridden Bike/h2>
+<p><%= @trips.most_ridden_bike %></p>
+</div>
+
+<div class="trips-dashboard-least-ridden-bike">
+<h2>Least Ridden Bike</h2>
+<p><%= @trips.least_ridden_bike%></p>
+</div>
+
+<div class="trips-dashboard-user-subscription">
+<h2>User Subscription Stats</h2>
+<p>Type: <%= @trips.user_types_one %> Percentage of Total: <%= @trips.user_percentage %></p>
+<p>Type: <%= @trips.user_types_two %> Percentage of Total: <%= @trips.user_percentage %></p>
+</div>
+
+<div class="trips-dashboard-highest-trip-date">
+<h2>Date with Highest Number of Trip</h2>
+<p><%= @trips.highest_trip_date %></p>
+</div>
+
+<div class="trips-dashboard-lowest-trip-date">
+<h2>Date with Lowest Number of Trips</h2>
+<p><%= @trips.lowest_trip_date %></p>
+</div>
+
+

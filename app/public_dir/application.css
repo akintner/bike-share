@@ -21,6 +21,9 @@ body {
   color: #eee;
 }
 
+#cities {
+  background-color: red;
+}
 /*FOOTER*/
 .footer {
   background-color: #222;
@@ -30,6 +33,7 @@ body {
 /*station new*/
 form {}
 .new-station-prompt {}
+.new-city-prompt {}
 
 /*station index*/
 h1.station-index-page-title {}
@@ -41,8 +45,14 @@ h1.station-index-page-title {}
 div.station-info:hover {
   background-color: rgba(255,255,255,0.7);
 }
+div.city-info:hover {
+  background-color: rgba(255,255,255,0.7);
+}
 h2.station-name {}
 .station-id {}
+
+h2.city-name {}
+.city-id {}
 
 p.station-city {}
 p.station-coordinates {}
