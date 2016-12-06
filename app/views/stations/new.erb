@@ -16,12 +16,10 @@
   <div class="form-group row">
     <label for="city" class="new-station-prompt">Choose a city:</label>
     <input type="text" name="city" list="cities">
-    <datalist id="cities" <% @cities.each do |city| %>
-      <option value="<%= city.name %>" />
-      <% end %>>
+    <datalist id="cities"> <% @cities.each do |city| %>
+      <option value="<%= city.name %>" id="<%= city.name %>"/>
+      <% end %>
     </datalist>
-    <label for="city" class="new-station-prmopt">Add a new city</label>
-    <a class="button btn btn-primary" href="/cities/new">Create City</a>
   </div>
 
   <input class="button" type="submit" value="Submit"/>
