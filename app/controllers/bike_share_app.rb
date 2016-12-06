@@ -77,7 +77,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trip = Trip.all
+    @trips = Trip.all
     erb :"/trips/index"
   end
 
@@ -100,14 +100,15 @@ class BikeShareApp < Sinatra::Base
     erb :"/trips/edit"
   end
 
-  put '/trips/:id' do |id|
-    Trip.update(params[:trip])
+  put '/trips/:id' do
+    trip = Trip.find(params[:id])
+    trip.update(params[:trip])
     redirect "/trips/#{id}"
   end
 
-  delete '/trips/:id' do |id|
-    Trip.destroy(id.to_i)
-    redirect '/trip'
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+    redirect '/trips'
   end
 
 end
