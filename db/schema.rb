@@ -43,4 +43,17 @@ ActiveRecord::Schema.define(version: 20161205222005) do
     t.integer  "city_id"
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.integer  "duration_in_seconds"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "start_station_id"
+    t.integer  "end_station_id"
+    t.integer  "bike_id"
+    t.integer  "subscription_type"
+    t.integer  "zipcode_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
 end

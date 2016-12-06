@@ -1,0 +1,40 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Trip ID</th>
+      <th>Duration (in seconds)</th>
+      <th>Start Date</th>
+      <th>Start Station ID</th>
+      <th>End Date</th>
+      <th>End Station Id</th>
+      <th>Bike ID</th>
+      <th>Subscription Type</th>
+      <th>Zip Code</th>
+      <th>Delete</th>
+      <th>Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <% count = 0 %> -->
+    <th scope="row" id="total entries"></th>
+    <% @trips.each do |trip| %>
+    <tr>
+      <td><%= trip.id %></td>
+      <td><%= trip.duration_in_seconds%></td>
+      <td><%= trip.start_date%></td>
+      <td><%= trip.start_station_id%></td>
+      <td><%= trip.end_date%></td>
+      <td><%= trip.end_station_id%></td>
+      <td><%= trip.bike_id%></td>
+      <td><%= trip.subscription_type%></td>
+      <td><%= trip.zipcode_id%></td>
+      <td><form id="trip_<%= trip.id %>" action="/trips/<%=trip.id%>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input id="delete_trip" type="submit" value="Delete"/>
+      </form></td>
+      <td><a id="Update_<%= trip.id %>" class="btn btn-primary button" href="/trips/<%=trip.id%>/edit"> Update Trip<a/></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

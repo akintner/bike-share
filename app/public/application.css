@@ -88,3 +88,35 @@ p.station-coordinates {}
 
 /*station edit*/
 .edit-station-page-title {}
+
+  /* ~~~~~~~ TRIP ~~~~~~~*/
+  /*trip new*/
+  form {}
+  .new-trip-prompt {}
+
+  /*station index*/
+  h1.trip-index-page-title {}
+
+  .trip-info {
+    background-color: rgba(255,255,255,0.3);
+  }
+
+  div.trip-info:hover {
+    background-color: rgba(255,255,255,0.7);
+  }
+  h2.trip-name {}
+  .trip-id {}
+
+  p.trip-city {}
+  p.trip-coordinates {}
+
+  /*station show*/
+  .show-trip-id {}
+  .show-trip-dock-count {}
+  .show-station-installation-date {}
+
+  .show-station-city {}
+  .show-station-coordinates {}
+
+  /*station edit*/
+  .edit-station-page-title {}
