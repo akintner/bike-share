@@ -2,24 +2,27 @@ require_relative '../../spec_helper'
 
 describe "When a user updates a trip's information" do
   context "from the show" do
+    let(:station_1) { Station.create(name: "Alameda",
+                                  dock_count: 37,
+                                  installation_date: "March 3, 2003"
+                                 )}
+    let(:station_2) { Station.create(name: "Union Station",
+                                  dock_count: 37,
+                                  installation_date: "March 3, 2003"
+                                 )}
+    let(:subscription)  { Subscription.create(name: "Customer") }
+
     it "saves the new information to the database" do
-      station1= Station.create(name: "Alameda",
-                            dock_count: 37,
-                            installation_date: "March 1, 2000"
-                           )
-      station2 = Station.create(name: "Union Station",
-                             dock_count: 37,
-                             installation_date: "March 1, 2000"
-                            )
       trip = Trip.create(duration_in_seconds: 77,
                          start_date: "March 3, 2004 14:45",
                          end_date: "March 3, 2004 14:46",
-                         start_station_id: station1.id,
-                         end_station_id: station2.id,
+                         start_station_id: station_1.id,
+                         end_station_id: station_2.id,
                          bike_id: 37,
-                         subscription_id: 2,
                          zipcode_id: 3
                         )
+      trip.subscription = subscription
+      trip.save
 
       visit "/trips/#{trip.id}"
       click_on 'Update trip'
@@ -28,7 +31,6 @@ describe "When a user updates a trip's information" do
       expect(find_field('trip[duration_in_seconds]').value).to eq "77"
 
       fill_in "trip[duration_in_seconds]", with: "60"
-      # binding.pry
       click_on "Update trip"
 
       expect(page).to have_current_path "/trips/#{trip.id}"
@@ -38,36 +40,38 @@ describe "When a user updates a trip's information" do
   end
 
   context "from the index" do
+    let(:station_1) { Station.create(name: "Alameda",
+                                  dock_count: 37,
+                                  installation_date: "March 3, 2003"
+                                 )}
+    let(:station_2) { Station.create(name: "Union Station",
+                                  dock_count: 37,
+                                  installation_date: "March 3, 2003"
+                                 )}
+    let(:subscription)  { Subscription.create(name: "Customer") }
     it "saves the new information to the database" do
-      station1= Station.create(name: "Alameda",
-                            dock_count: 37,
-                            installation_date: "March 1, 2000"
-                           )
-      station2 = Station.create(name: "Union Station",
-                             dock_count: 37,
-                             installation_date: "March 1, 2000"
-                            )
       trip_1 = Trip.create(duration_in_seconds: 60,
                          start_date: "March 3, 2004 14:45",
                          end_date: "March 3, 2004 14:46",
-                         start_station_id: station1.id,
-                         end_station_id: station2.id,
+                         start_station_id: station_1.id,
+                         end_station_id: station_2.id,
                          bike_id: 37,
-                         subscription_id: 2,
                          zipcode_id: 3
                         )
       trip_2 = Trip.create(duration_in_seconds: 60,
                          start_date: "March 3, 2004 14:45",
                          end_date: "March 3, 2004 14:46",
-                         start_station_id: station1.id,
-                         end_station_id: station2.id,
+                         start_station_id: station_1.id,
+                         end_station_id: station_2.id,
                          bike_id: 37,
-                         subscription_id: 2,
                          zipcode_id: 3
                         )
+      trip_1.subscription = subscription
+      trip_2.subscription = subscription
+      trip_1.save
+      trip_2.save
 
       visit "/trips"
-
       click_on('Update_' + "#{trip_2.id}")
 
       expect(page).to have_current_path "/trips/#{trip_2.id}/edit"
