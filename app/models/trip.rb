@@ -5,7 +5,7 @@ class Trip < ActiveRecord::Base
   validates :start_station,       presence: true
   validates :end_station,         presence: true
   validates :subscription_type,   presence: true
-  validates :zipcode_id,          presence: true
+  validates :zipcode_id, :presence => true
 
   belongs_to :start_station, :class_name => "Station", :foreign_key => "start_station_id"
   belongs_to :end_station,   :class_name => "Station", :foreign_key => "end_station_id"
