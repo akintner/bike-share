@@ -17,7 +17,7 @@ describe "When a user updates a trip's information" do
                          start_station_id: station1.id,
                          end_station_id: station2.id,
                          bike_id: 37,
-                         subscription_type: 2,
+                         subscription_id: 2,
                          zipcode_id: 3
                         )
 
@@ -53,7 +53,7 @@ describe "When a user updates a trip's information" do
                          start_station_id: station1.id,
                          end_station_id: station2.id,
                          bike_id: 37,
-                         subscription_type: 2,
+                         subscription_id: 2,
                          zipcode_id: 3
                         )
       trip_2 = Trip.create(duration_in_seconds: 60,
@@ -62,7 +62,7 @@ describe "When a user updates a trip's information" do
                          start_station_id: station1.id,
                          end_station_id: station2.id,
                          bike_id: 37,
-                         subscription_type: 2,
+                         subscription_id: 2,
                          zipcode_id: 3
                         )
 
