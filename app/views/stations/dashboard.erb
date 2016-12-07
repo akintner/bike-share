@@ -1,49 +1,73 @@
-<h1>Station Dashboard</h1>
+<h1 class="dashboard-title stations-dashboard-title">Station Dashboard</h1>
 
+<div class="row">
+<div class="col-md-3">
 <div class="stations-dashboard-total">
-<h2>Total Number of Stations</h2>
-<p><%= @stations.total %></p>
+  <h4>Total Number of Stations</h4>
+  <p class="dashboard-stat"><%= @stations.total %></p>
+</div>
 </div>
 
+<div class="col-md-3">
 <div class="stations-dashboard-average">
-<h2>Average Available Bikes</h2>
-<p class="station-dashboard-average"><%= @stations.average_available_bikes %></p>
+  <h4>Average Available Bikes</h4>
+  <p class="station-dashboard-average dashboard-stat"><%= @stations.average_available_bikes %></p>
+</div>
 </div>
 
+<div class="col-md-3">
 <div class="stations-dashboard-max">
-<h2>Most Bikes Available at Station</h2>
-<p><%= @stations.most_bikes_available_at_station %></p>
+  <h4>Most Bikes Available at Station</h4>
+  <p class="dashboard-stat"><%= @stations.most_bikes_available_at_station %></p>
+</div>
 </div>
 
-<div class="stations-dashboard-most-bikes">
-<h2>Stations With Most Bikes</h2>
-<% @stations.stations_with_most_bikes(3).each do |station|%>
-<h3><%= station.name %></h3>
-<p>Docks: <%= station.dock_count %></p>
-<% end %>
+<div class="col-md-3">
+  <div class="stations-dashboard-min">
+    <h4>Fewest Bikes Available at Station</h4>
+    <p class="dashboard-stat"><%= @stations.fewest_bikes_available_at_station %></p>
+  </div>
+</div>
 </div>
 
-<div class="stations-dashboard-min">
-<h2>Fewest Bikes Available at Station</h2>
-<p><%= @stations.fewest_bikes_available_at_station %></p>
+  <div class="stations-dashboard-most-bikes stations-dashboard-area">
+    <h3>Stations With Most Bikes</h3>
+    <div class="row">
+    <% @stations.stations_with_most_bikes(3).each do |station|%>
+    <div class="col-md-4 stations-dashboard-station">
+      <h4><%= station.name %></h4>
+      <p>Docks: <%= station.dock_count %></p>
+    </div>
+  <% end %>
+  </div>
 </div>
 
-<div class="stations-dashboard-fewest-bikes">
-<h2>Stations With Fewest Bikes</h2>
-<% @stations.stations_with_fewest_bikes(3).each do |station|%>
-<h3><%= station.name %></h3>
-<p>Docks: <%= station.dock_count %></p>
-<% end %>
+<div class="stations-dashboard-fewest-bikes stations-dashboard-area">
+  <h2>Stations With Fewest Bikes</h2>
+  <div class="row">
+  <% @stations.stations_with_fewest_bikes(3).each do |station|%>
+  <div class="col-md-4 stations-dashboard-station">
+  <h3><%= station.name %></h3>
+  <p>Docks: <%= station.dock_count %></p>
+</div>
+  <% end %>
+</div>
 </div>
 
-<div class="stations-dashboard-newest">
-<h2>Most Recently Installed</h2>
-<p><%= @stations.most_recently_installed_name %></p>
-<p>Installation Date: <%= @stations.most_recently_installed_date %></p>
+<div class="row">
+<div class="col-md-6">
+  <div class="stations-dashboard-newest">
+  <h2>Most Recently Installed</h2>
+  <p><%= @stations.most_recently_installed_name %></p>
+  <p>Installation Date: <%= @stations.most_recently_installed_date %></p>
+</div>
 </div>
 
-<div class="stations-dashboard-oldest">
-<h2>Oldest Station</h2>
-<p><%= @stations.oldest_station_name %></p>
-<p>Installation Date: <%= @stations.oldest_station_date %></p>
+<div class="col-md-6">
+    <div class="stations-dashboard-oldest">
+  <h2>Oldest Station</h2>
+  <p><%= @stations.oldest_station_name %></p>
+  <p>Installation Date: <%= @stations.oldest_station_date %></p>
+</div>
+</div>
 </div>

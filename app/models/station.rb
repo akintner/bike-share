@@ -13,7 +13,7 @@ class Station < ActiveRecord::Base
 
   def self.average_available_bikes
     result = self.average("dock_count")
-    result.to_f
+    result.to_f.round(0)
   end
 
   def self.most_bikes_available_at_station
