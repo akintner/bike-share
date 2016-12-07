@@ -47,8 +47,8 @@
 
 <div class="trips-dashboard-user-subscription">
 <h2>User Subscription Stats</h2>
-<p>Type: <%= @trips.user_types_one %> Percentage of Total: <%= @trips.user_percentage %></p>
-<p>Type: <%= @trips.user_types_two %> Percentage of Total: <%= @trips.user_percentage %></p>
+<p>Type: <%= @trips.number_customers %> Percentage of Total: <%= @trips.user_percentage("Customer") %></p>
+<p>Type: <%= @trips.number_subscribers %> Percentage of Total: <%= @trips.user_percentage("Subscriber") %></p>
 </div>
 
 <div class="trips-dashboard-highest-trip-date">
