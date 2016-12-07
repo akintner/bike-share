@@ -39,45 +39,67 @@ class Trip < ActiveRecord::Base
     most.values.max
   end
 
-  def self.rides_per_month(month)
-    
-    self.where(end_date: month).count
+  def self.rides_per_month
+    start = self.select("end_date").group("end_date").count
+    # months = month.keys.group_by(&:month).keys
+    # values = month.keys.group_by(&:month).values
+    # binding.pry
+    # "#{by_month} = #{month.values.reduce(:+)}"
+    months = Hash.new{0}
+    month = start.keys.group_by(&:month).keys
+    values = start.keys.group_by(&:month).values
+    months.each do |month, values|
+      months[month] = values.count
+    end     
+    binding.pry
   end
 
   def self.rides_per_year(year)
-    self.select("end_date").group("end_date")
+    year = self.select("end_date").group("end_date").count
+    by_year = year.keys.group_by(&:year).keys
+    binding.pry
+    "#{by_year} = #{year.values.reduce(:+)}"
   end
 
   def self.most_ridden_bike
-    most = self.select("bike_id").group("bike_id").count
-    puts most.values.max
+    most = self.group("bike_id").order("bike_id").count
+    most.invert
+    bike = most.max
+    "#{bike[0]}"
   end
   
   def self.least_ridden_bike
-    least = self.select("bike_id").group("bike_id").count
-    puts least.values.min
+    least = self.group("bike_id").order("bike_id").count
+    least.invert
+    bike = least.min
+    "#{bike[0]}"
   end
 
   def self.number_customers
-    self.where(subscription_type: "Customer").count
+    "Customers = #{self.where(subscription_type: 0).count}"
   end
 
   def self.number_subscribers
-    self.where(subscription_type: "Subscriber").count
+    "Subscribers = #{self.where(subscription_type: 1).count}"
   end
 
   def self.user_percentage(user_type)
-    self.where(subscription_type: user_type).count / Trip.count
+    user_type.to_i
+    (self.where(subscription_type: user_type).count) / Trip.count
   end
 
   def self.highest_trip_date
     most = self.select("end_date").group("end_date").count
-    most.values.max
+    most.invert
+    date = most.values.max
+    date
   end
 
   def self.lowest_trip_date
     least = self.select("end_date").group("end_date").count
-    least.values.min
+    least.invert
+    date = least.values.min
+    date
   end
 
 end
