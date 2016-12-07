@@ -42,7 +42,7 @@ class TripImporter
     if string.nil?
       nil
     else
-      Date.strptime(string, '%m/%e/%Y')
+      Date.strptime(string, '%B/%e/%Y/%M/%S')
     end
   end
 
