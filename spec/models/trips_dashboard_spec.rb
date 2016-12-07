@@ -15,7 +15,7 @@ require 'pry'
        trip2.end_station = end_station
        trip1.save
        trip2.save
-       binding.pry
+
        expect(Trip.total).to eq(2)
      end
  
@@ -46,10 +46,10 @@ require 'pry'
      it "can find station with most rides starting there" do
        Trip.create(duration_in_seconds: 187, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 2, bike_id: 17, subscription_type: "Customer", zipcode_id: 81420)
        Trip.create(duration_in_seconds: 69, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 2, end_station_id: 2, bike_id: 17, subscription_type: "Customer", zipcode_id: 81420)
-       Trip.create(duration_in_seconds: 271, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 1, bike_id: 17, subscription_type: "Customer", zipcode_id: 81420)
+       Trip.create(duration_in_seconds: 271, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 2, end_station_id: 1, bike_id: 17, subscription_type: "Customer", zipcode_id: 81420)
        Trip.create(duration_in_seconds: 561, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 2, end_station_id: 1, bike_id: 17, subscription_type: "Customer", zipcode_id: 81420)
  
-       expect(Trip.most_rides_starting).to eq(7)
+       expect(Trip.most_rides_starting).to eq(2)
      end
  
      it "can find station with most rides ending there" do
@@ -58,7 +58,8 @@ require 'pry'
        Trip.create(duration_in_seconds: 271, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 1, bike_id: 17, subscription_type: "Customer", zipcode_id: 81420)
        Trip.create(duration_in_seconds: 561, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 2, end_station_id: 2, bike_id: 17, subscription_type: "Customer", zipcode_id: 81420)
  
-       expect(Trip.most_rides_ending).to eq(12)
+       expect(Trip.most_rides_ending).to eq(3)
+       expect(Trip.most_rides_ending).to have_content("Starter")
      end
  
      it "can find trip rides per month" do

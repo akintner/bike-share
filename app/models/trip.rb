@@ -50,13 +50,11 @@ class Trip < ActiveRecord::Base
 
   def self.most_ridden_bike
     most = self.select("bike_id").group("bike_id").count
-    
     puts most.values.max
   end
   
   def self.least_ridden_bike
     least = self.select("bike_id").group("bike_id").count
-    
     puts least.values.min
   end
 
