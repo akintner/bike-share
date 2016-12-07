@@ -4,6 +4,10 @@
   <div class="condition-info" id="condition_<%= condition.id %>">
     <h2><a class="condition-date" href="/conditions/<%= condition.id %>"><%= condition.measurement_date %></a></h2>
     <p><a class="button btn btn-primary" href="/conditions/<%= condition.id %>/edit">Update</a></p>
+    <form action="/conditions/<%= condition.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE" />
+      <input class="button btn btn-primary" type="submit" value="Delete" />
+    </form>
   </div>
 <% end %>
 
