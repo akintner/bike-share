@@ -8,4 +8,16 @@ class Condition < ActiveRecord::Base
   validates :precipitation_inches, presence: true
   validates :measurement_date, presence: true
 
+  def self.rides_by_temperature(temp)
+  end
+
+  def self.rides_by_precip(inches)
+  end
+
+  def self.rides_by_wind(speed)
+  end
+
+  def self.rides_by_visibility(miles)
+  end
+
 end
