@@ -14,21 +14,38 @@ class TripImporter
       duration_in_seconds   = to_seconds(row['duration'])
       start_date            = to_date(row['start_date'])
       end_date              = to_date(row['end_date'])
-      # start_station       = row['end_station_name']
-      # end_station         = row['start_station_name']
-      subscription_type     = row['subscription_type']
-      zipcode_id            = row['zip_code']
+      bike_id               = row['bike_id']
+      start_station_name    = row['end_station_name']
+      end_station_name      = row['start_station_name']
+      subscription_name     = row['subscription_type']
+      zipcode_value         = row['zip_code']
+
+      start_station = Station.find_by(
+        name: start_station_name
+      )
+
+      end_station = Station.find_by(
+        name: end_station_name
+      )
+
+      subscription = Subscription.find_or_create_by(
+        name: subscription_name
+      )
+
+      zipcode = Zipcode.find_or_create_by(
+        zipcode: zipcode_value
+      )
 
       trip = Trip.new(
         duration_in_seconds:  duration_in_seconds,
         start_date:           start_date,
         end_date:             end_date,
-        # start_station:      start_station,
-        # end_station:        end_station,
-        subscription_type:    subscription_type,
-        zipcode_id:           zipcode_id
       )
 
+      trip.start_station = start_station
+      trip.end_station = end_station
+      trip.subscription = subscription
+      trip.zipcode = zipcode
 
       trip.save if trip.valid?
 

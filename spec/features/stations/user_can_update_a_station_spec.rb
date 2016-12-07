@@ -2,9 +2,11 @@ require './spec/spec_helper'
 
 describe "When a user updates a station's information" do
   context "from the index" do
+    let!(:city) { City.create(name: "Windy City") }
+
     it "saves the new information to the database" do
-      station_1 = Station.create(name: "Chicago", dock_count: 22, installation_date: "March 3, 2001")
-      station_2 = Station.create(name: "Detroit", dock_count: 11, installation_date: "March 6, 2001")
+      station_1 = Station.create(name: "Chicago", dock_count: 22, installation_date: "March 3, 2001", city_id: city.id)
+      station_2 = Station.create(name: "Detroit", dock_count: 11, installation_date: "March 6, 2001", city_id: city.id)
 
       visit '/stations'
       within '#station_' + "#{station_2.id}" do
@@ -34,8 +36,10 @@ describe "When a user updates a station's information" do
   end
 
   context "from the show page" do
+    let!(:city) { City.create(name: "Windy City") }
+
     it "saves the new information to the database" do
-      station = Station.create(name: "Chicago", dock_count: 22, installation_date: "March 3, 2001")
+      station = Station.create(name: "Chicago", dock_count: 22, installation_date: "March 3, 2001", city_id: city.id)
 
       visit '/stations/'+"#{station.id}"
       click_on "Update station"

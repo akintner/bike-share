@@ -32,27 +32,30 @@ describe "Zipcode" do
                                 installation_date: "March 5, 2000",
                                 city_id: 1
                                 )
+      subscription = Subscription.create(name: "Customer")
 
-      trip_1 =  Trip.create(
+      trip_1 =  Trip.new(
                          duration_in_seconds: 60,
                          start_date: DateTime.now,
                          end_date: DateTime.now,
                          start_station_id: 1,
                          end_station_id: 2,
                          bike_id: 37,
-                         subscription_type: 2,
                          zipcode_id: 1
                          )
-      trip_2 =  Trip.create(
+      trip_2 =  Trip.new(
                          duration_in_seconds: 60,
                          start_date: Date.today,
                          end_date: Date.today,
                          start_station_id: 1,
                          end_station_id: 2,
                          bike_id: 37,
-                         subscription_type: 2,
                          zipcode_id: 2
                          )
+      trip_1.subscription = subscription
+      trip_2.subscription = subscription
+      trip_1.save
+      trip_2.save
 
       expect(zipcode_1.trips.count).to eq(1)
       expect(zipcode_2.trips.count).to eq(1)
