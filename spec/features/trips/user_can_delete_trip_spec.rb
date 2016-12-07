@@ -2,16 +2,22 @@ require_relative '../../spec_helper'
 
 describe "When a user want to delete a trip" do
   context "they can delete from the show" do
-    let(:station_1) { Station.create(name: "Alameda",
-                                  dock_count: 37,
-                                  installation_date: "March 3, 2003"
-                                 )}
-    let(:station_2) { Station.create(name: "Union Station",
-                                  dock_count: 37,
-                                  installation_date: "March 3, 2003"
-                                 )}
-    let(:subscription)  { Subscription.create(name: "Customer") }
     it "removes the trip from the database" do
+      city = City.create(name: "Boston")
+      station_1 = Station.create(name: "Alameda",
+                                 dock_count: 37,
+                                 installation_date: "March 3, 2003"
+                                )
+      station_2 = Station.create(name: "Union Station",
+                                 dock_count: 37,
+                                 installation_date: "March 3, 2003"
+                                )
+      station_1.city = city
+      station_2.city = city
+      station_1.save
+      station_2.save
+      subscription = Subscription.create(name: "Customer")
+
       trip = Trip.create(duration_in_seconds: 60,
                          start_date: "March 3, 2004 14:45",
                          end_date: "March 3, 2004 14:46",
@@ -31,16 +37,24 @@ describe "When a user want to delete a trip" do
   end
 
   context "they can delete from the index" do
-    let(:station_1) { Station.create(name: "Alameda",
-                                  dock_count: 37,
-                                  installation_date: "March 3, 2003"
-                                 )}
-    let(:station_2) { Station.create(name: "Union Station",
-                                  dock_count: 37,
-                                  installation_date: "March 3, 2003"
-                                 )}
-    let(:subscription)  { Subscription.create(name: "Customer") }
+
     it "removes that trip from the database" do
+      city = City.create(name: "Boston")
+      station_1 = Station.create(name: "Alameda",
+                                 dock_count: 37,
+                                 installation_date: "March 3, 2003"
+                                )
+      station_2 = Station.create(name: "Union Station",
+                                 dock_count: 37,
+                                 installation_date: "March 3, 2003"
+                                )
+      station_1.city = city
+      station_2.city = city
+      station_1.save
+      station_2.save
+      
+      subscription = Subscription.create(name: "Customer")
+
       trip_1 = Trip.create(duration_in_seconds: 60,
                            start_date: "March 3, 2004 14:45",
                            end_date: "March 3, 2004 14:46",

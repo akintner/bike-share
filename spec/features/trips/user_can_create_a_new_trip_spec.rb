@@ -4,6 +4,7 @@ describe "Creating a new trip" do
   let!(:subscription)  { Subscription.create(name: "Customer") }
 
   it "saves the trip information to the database" do
+    city = City.create(name: "Boston")
     station1= Station.create(name: "Alameda",
                           dock_count: 37,
                           installation_date: "March 1, 2000"
@@ -12,6 +13,11 @@ describe "Creating a new trip" do
                            dock_count: 37,
                            installation_date: "March 1, 2000"
                           )
+    station1.city = city
+    station2.city = city
+    station1.save
+    station2.save
+    
     visit '/trips/new'
 
     fill_in 'duration', with: 63
