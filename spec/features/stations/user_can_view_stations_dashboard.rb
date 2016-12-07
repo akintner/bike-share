@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require './spec/spec_helper'
 
 describe "When a user visits station dashboard page" do
   context "user sees dashboard information" do

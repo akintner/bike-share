@@ -3,6 +3,7 @@ require './spec/spec_helper'
 describe "Station importer" do
   let(:bad)  { './spec/fixtures/bad_stations.csv' }
   let(:good) { './spec/fixtures/good_stations.csv' }
+  let!(:city) { City.create(name: "San Jose") }
 
   context "unsuccessful imports" do
     it "does not import any stations" do

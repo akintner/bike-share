@@ -1,0 +1,14 @@
+<h1 class="edit-condition-page-title">Edit Weather Condtions</h1>
+
+<form action="/conditions/<%= @condition.id %>" method="POST">
+  <input type="hidden" name="_method" value="PUT" />
+  <input type="date" name="condition[measurement_date]" value=<%= @condition.measurement_date %> />
+  <input type="number" name="condition[max_temperature_f]" value=<%= @condition.max_temperature_f %> />
+  <input type="number" name="condition[mean_temperature_f]" value=<%= @condition.mean_temperature_f %> />
+  <input type="number" name="condition[min_temperature_f]" value=<%= @condition.min_temperature_f %> />
+  <input type="number" name="condition[humidity_percent]" value=<%= @condition.humidity_percent %> />
+  <input type="number" name="condition[visibility_miles]" value=<%= @condition.visibility_miles %> />
+  <input type="number" name="condition[mean_wind_speed_mph]" value=<%= @condition.mean_wind_speed_mph %> />
+  <input type="number" name="condition[precipitation_inches]" value=<%= @condition.precipitation_inches %> />
+  <input type="submit" value="Update weather conditions" />
+</form>

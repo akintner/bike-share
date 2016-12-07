@@ -4,10 +4,8 @@
 <p class="show-trip-end-date"><%= @trip.end_date %></p>
 <p class="show-trip-start-station"><%= @stations.find_by(id: @trip.start_station_id).name %></p>
 <p class="show-trip-end-station"><%= @stations.find_by(id: @trip.end_station_id).name %></p>
-<!-- <p class="show-trip-end-station"><%= @trip.start_station_id %></p>
-<p class="show-trip-end-station"><%= @trip.end_station_id %></p> -->
 <p class="show-trip-bike-id"><%= @trip.bike_id %></p>
-<p class="show-trip-subscription-type"><%= @trip.subscription_type %></p>
+<p class="show-trip-subscription"><%= @trip.subscription_name %></p>
 <p class="show-trip-zipcode"><%= @trip.zipcode_id %></p>
 
 <form action="/trips/<%= @trip.id %>" method="POST">

@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require './spec/spec_helper'
 
 describe "When a user visits the new station path" do
   it "they can create a new station" do
