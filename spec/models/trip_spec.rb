@@ -147,6 +147,19 @@ describe "Trip" do
                                  )}
     let!(:subscription) { Subscription.create(name: "Subscriber") }
 
+    it "validates valid trip" do
+      trip = Trip.new(duration_in_seconds: 60,
+                      start_date: Time.now,
+                      end_date: Time.now,
+                      start_station_id: 1,
+                      end_station_id: 2,
+                      bike_id: 37,
+                      subscription_type: 2,
+                      zipcode_id: 3
+                     )
+      expect(trip).not_to be_valid
+    end
+
     let(:trip) { Trip.new(start_date: Time.now,
                          duration_in_seconds: 88,
                          end_date: Time.now,

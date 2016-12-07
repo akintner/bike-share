@@ -62,4 +62,10 @@ ActiveRecord::Schema.define(version: 20161207170214) do
     t.integer  "subscription_id"
   end
 
+  create_table "zipcodes", force: :cascade do |t|
+    t.integer  "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

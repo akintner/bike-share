@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require './spec/spec_helper'
 
 describe "When a user wants to delete a station" do
   it "they can delete from the index" do

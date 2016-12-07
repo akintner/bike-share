@@ -2,6 +2,7 @@ class Station < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :dock_count, numericality: { only_integer: true }
   validates :installation_date, presence: true
+  validates :city_id, presence:true
 
   belongs_to :city
   has_many :start_stations, :class_name => 'Trip', :foreign_key => 'start_station_id'

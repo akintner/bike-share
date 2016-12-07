@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require './spec/spec_helper'
 
 describe "When a user visits station page" do
   it "they see station information" do

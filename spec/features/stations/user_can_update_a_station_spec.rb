@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require './spec/spec_helper'
 
 describe "When a user updates a station's information" do
   context "from the index" do
