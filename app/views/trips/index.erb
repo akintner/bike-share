@@ -12,7 +12,7 @@
       <th>Subscription Type</th>
       <th>Zip Code</th>
       <th>Delete</th>
-      <th>Update</th>
+      <th class="button btn btn-update">Update</th>
     </tr>
   </thead>
   <tbody>
@@ -29,8 +29,8 @@
       <td><%= trip.bike_id%></td>
       <td><%= trip.subscription_id%></td>
       <td><%= trip.zipcode_id%></td>
-      <td><form id="trip_<%= trip.id %>" action="/trips/<%=trip.id%>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
+      <td><form class="btn-form" id="trip_<%= trip.id %>" action="/trips/<%=trip.id%>" method="POST">
+        <input class="button btn btn-delete" type="hidden" name="_method" value="DELETE">
         <input id="delete_trip" type="submit" value="Delete"/>
       </form></td>
       <td><a id="Update_<%= trip.id %>" class="btn btn-primary button" href="/trips/<%=trip.id%>/edit"> Update Trip<a/></td>
