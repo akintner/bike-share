@@ -8,4 +8,8 @@ class Condition < ActiveRecord::Base
   validates :precipitation_inches, presence: true
   validates :measurement_date, presence: true
 
+  def present_date
+    measurement_date.strftime('%b %e, %Y')
+  end
+
 end
