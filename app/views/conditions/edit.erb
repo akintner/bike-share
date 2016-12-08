@@ -1,14 +1,36 @@
+<div class="wrapper">
 <h1 class="edit-condition-page-title">Edit Weather Condtions</h1>
 
 <form action="/conditions/<%= @condition.id %>" method="POST">
-  <input type="hidden" name="_method" value="PUT" />
-  <input type="date" name="condition[measurement_date]" value=<%= @condition.measurement_date %> />
-  <input type="number" name="condition[max_temperature_f]" value=<%= @condition.max_temperature_f %> />
-  <input type="number" name="condition[mean_temperature_f]" value=<%= @condition.mean_temperature_f %> />
-  <input type="number" name="condition[min_temperature_f]" value=<%= @condition.min_temperature_f %> />
-  <input type="number" name="condition[humidity_percent]" value=<%= @condition.humidity_percent %> />
-  <input type="number" name="condition[visibility_miles]" value=<%= @condition.visibility_miles %> />
-  <input type="number" name="condition[mean_wind_speed_mph]" value=<%= @condition.mean_wind_speed_mph %> />
-  <input type="number" name="condition[precipitation_inches]" value=<%= @condition.precipitation_inches %> />
-  <input type="submit" value="Update weather conditions" />
+  <div class="form-group">
+    <input type="hidden" name="_method" value="PUT" />
+  </div>
+  <div class="form-group">
+    <input type="date" class="form-control" name="condition[measurement_date]" value=<%= @condition.measurement_date %> />
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" name="condition[max_temperature_f]" placeholder="Max temperature (&deg;F)" value=<%= @condition.max_temperature_f %> />
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" name="condition[mean_temperature_f]" placeholder="Mean temperature (&deg;F)" value=<%= @condition.mean_temperature_f %> />
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" name="condition[min_temperature_f]" placeholder="Min temperature (&deg;F)" value=<%= @condition.min_temperature_f %> />
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" name="condition[humidity_percent]" placeholder="Humidity (%)" value=<%= @condition.humidity_percent %> />
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" name="condition[visibility_miles]" placeholder="Visibilitiy (miles)" value=<%= @condition.visibility_miles %> />
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" name="condition[mean_wind_speed_mph]" placeholder="Mean wind speed (mph)" value=<%= @condition.mean_wind_speed_mph %> />
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" name="condition[precipitation_inches]" placeholder="Precipication (inches)" value=<%= @condition.precipitation_inches %> />
+  </div>
+  <div class="form-group">
+    <input type="submit" class="btn btn-update button" value="Update weather conditions" />
+  </div>
 </form>
+</div>

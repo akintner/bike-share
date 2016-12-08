@@ -22,7 +22,7 @@ describe "Show weather conditions for all days" do
                                )
     visit "/conditions"
 
-    expect(page).to have_content(Date.today)
-    expect(page).to have_content(Date.yesterday)
+    expect(page).to have_content(Date.today.strftime('%b %e, %Y'))
+    expect(page).to have_content(Date.yesterday.strftime('%b %e, %Y'))
   end
 end
