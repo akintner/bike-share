@@ -1,6 +1,6 @@
 <h1 class="show-station-name"><%= @station.name %></h1>
-<p class="show-station-dock-count"><%= @station.dock_count %></p>
-<p class="show-station-installation-date"><%= @station.installation_date %></p>
+<p class="show-station-dock-count">Dock Count: <%= @station.dock_count %></p>
+<p class="show-station-installation-date">Installation date: <%= @station.installation_date %></p>
 
 <form action="/stations/<%= @station.id %>" method="POST">
   <div class="form-group">
