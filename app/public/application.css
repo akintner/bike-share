@@ -152,6 +152,13 @@ div.city-info:hover {
 h2.station-name {}
 .station-id {}
 
+.station-name-list {
+  font-size: 12px;
+}
+
+.station-stats-area:hover {
+}
+
 h2.city-name {}
 .city-id {}
 
@@ -210,4 +217,3 @@ p.station-coordinates {}
       width: 80%;
     }
   }
-

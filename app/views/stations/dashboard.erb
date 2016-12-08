@@ -71,3 +71,37 @@
 </div>
 </div>
 </div>
+
+<% @stations.each do |station| %>
+<div class="">
+<div class="row">
+<div class="col-md-3">
+<div>
+  <p class="station-name-list"><%= station.name %></p>
+</div>
+</div>
+<div class="col-md-9 station-stats-area">
+<p>Number of Rides started at this station</p>
+<!-- <p class="dashboard-stat"><%= station.number_of_rides_started_at_station %></p> -->
+
+<p>Number of Rides ended at this station</p>
+<!-- <p class="dashboard-stat"><%= station.number_of_rides_ended_at_station %></p> -->
+
+<p>Most frequent destination station</p>
+<!-- <p class="dashboard-stat"><%= station.most_frequent_destination_station %></p> -->
+
+<p>Most frequent origination station</p>
+<!-- <p class="dashboard-stat"><%= station.most_frequent_origination_station %></p> -->
+
+<p>Date with most trips</p>
+<!-- <p class="dashboard-stat"><%= station.date_with_most_trips %></p> -->
+
+<p>Most Frequent zipcode for users at this station</p>
+<!-- <p class="dashboard-stat"><%= station.frequent_user_zipcode %></p> -->
+
+<p>Most Popular Bike</p>
+<!-- <p>Bike ID:<span class="dashboard-stat"><%= station.most_frequent_destination_station %></span></p> -->
+</div>
+</div><!-- end row -->
+</div><!-- end station-stat-area -->
+<% end %>

@@ -1,10 +1,13 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
   set :method_override, true
+  include WillPaginate::Sinatra::Helpers
 
-  get '/stations' do
-    @stations = Station.all
+  get '/stations/' do
+    @stations = Station.paginate(:page => params[:page], :per_page => 30)
     erb :"/stations/index"
   end
 
@@ -82,9 +85,9 @@ class BikeShareApp < Sinatra::Base
     redirect "/cities"
   end
 
-  get '/trips' do
-    @trips = Trip.all
+  get '/trips/' do
     @stations = Station.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
     erb :"/trips/index"
   end
 
@@ -127,8 +130,8 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
-  get '/conditions' do
-    @conditions = Condition.all.take(30)
+  get '/conditions/' do
+    @conditions = Condition.paginate(:page => params[:page], :per_page => 30)
     erb :"/conditions/index"
   end
 
