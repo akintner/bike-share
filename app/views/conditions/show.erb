@@ -11,8 +11,8 @@
 <form action="/conditions/<%= @condition.id %>" method="POST">
   <div class="form-group">
     <input type="hidden" name="_method" value="DELETE" />
-    <input class="button btn btn-primary" type="submit" value="Delete" />
+    <input class="button btn btn-delete" type="submit" value="Delete" />
   </div>
 </form>
 
-<p><a class="btn btn-primary button" href="/conditions/<%= @condition.id %>/edit">Update weather conditions</a></p>
+<p><a class="btn btn-update button" href="/conditions/<%= @condition.id %>/edit">Update weather conditions</a></p>
