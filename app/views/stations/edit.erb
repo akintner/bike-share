@@ -1,14 +1,16 @@
+<div class="wrapper">
 <h1 class="edit-station-page-title">Edit Station</h1>
 <form action="/stations/<%= @station.id %>" method="post">
   <input type="hidden" name="_method" value="PUT" />
-  <div class="form-group row">
-    <input  class="form-control" type="text" name="station[name]" value="<%= @station.name %>"/>
+  <div class="form-group">
+    <input  class="form-control" type="text" name="station[name]" value="<%= @station.name %>" placeholder="Name"/>
   </div>
-  <div class="form-group row">
-    <input  class="form-control" type="integer" name="station[dock_count]" value="<%= @station.dock_count %>"/>
+  <div class="form-group">
+    <input  class="form-control" type="integer" name="station[dock_count]" value="<%= @station.dock_count %>" placeholder="Dock count"/>
   </div>
-  <div class="form-group row">
+  <div class="form-group">
     <input  class="form-control" type="date" name="station[installation_date]" value="<%= @station.installation_date %>">
   </div>
-  <input  class="form-control btn btn-primary button" type="submit" value="Update station"/>
+  <input  class="btn btn-update button" type="submit" value="Update station"/>
 </form>
+</div>

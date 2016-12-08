@@ -1,12 +1,12 @@
 <h1 class="show-station-name"><%= @station.name %></h1>
-<p class="show-station-dock-count"><%= @station.dock_count %></p>
-<p class="show-station-installation-date"><%= @station.installation_date %></p>
+<p class="show-station-dock-count">Dock Count: <%= @station.dock_count %></p>
+<p class="show-station-installation-date">Installation date: <%= @station.installation_date %></p>
 
 <form action="/stations/<%= @station.id %>" method="POST">
   <div class="form-group">
-    <input class="button btn btn-primary" type="submit" value="Delete"/>
+    <input class="button btn btn-delete" type="submit" value="Delete"/>
     <input type="hidden" name="_method" value="DELETE">
   </div>
 </form>
 
-<a class="btn btn-primary button" href="/stations/<%= @station.id %>/edit">Update station</a>
+<a class="btn btn-update button" href="/stations/<%= @station.id %>/edit">Update station</a>
