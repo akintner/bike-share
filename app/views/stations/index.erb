@@ -1,14 +1,17 @@
 <h1 class="station-index-page-title">All Stations</h1>
 
 <% @stations.each do |station| %>
-<div class="station-info" id="station_<%= station.id %>">
-  <h2><a class="station-name" href="/stations/<%=station.id%>"><%= station.name %></a></h2>
-  <div>
-  <a class="button btn btn-update" href="/stations/<%= station.id %>/edit">Update</a>
-  <form class="btn-form" action='/stations/<%= station.id %>' method="POST">
-    <input class="button btn btn-delete" type="submit" value="Delete">
-    <input type="hidden" name="_method" value="DELETE">
-  </form>
+
+  <div class="station-info" id="station_<%= station.id %>">
+    <h2><a class="station-name" href="/stations/<%=station.id%>"><%= station.name %></a></h2>
+    <div>
+      <a class="button btn btn-update" href="/stations/<%= station.id %>/edit">Update</a>
+      <form class="btn-form" action='/stations/<%= station.id %>' method="POST">
+        <input class="button btn btn-delete" type="submit" value="Delete"/>
+        <input type="hidden" name="_method" value="DELETE">
+      </form>
+    </div>
   </div>
-</div>
 <% end %>
+
+<%= will_paginate @stations %>

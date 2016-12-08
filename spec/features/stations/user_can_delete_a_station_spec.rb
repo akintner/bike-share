@@ -20,7 +20,7 @@ describe "When a user wants to delete a station" do
 
     click_on "Delete"
 
-    expect(page).to have_current_path("/stations")
+    expect(page).to have_current_path("/stations/?page=1")
     expect(page).not_to have_content(station1.name)
   end
 end

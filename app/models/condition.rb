@@ -79,6 +79,9 @@ class Condition < ActiveRecord::Base
     most_recent = dates.last.measurement_date
     @visibility_range = [earliest, most_recent]
   end
-
   
+  def present_date
+    measurement_date.strftime('%b %e, %Y')
+  end
+
 end

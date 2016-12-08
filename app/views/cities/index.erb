@@ -4,11 +4,11 @@
   <div class="city-info" id="city_<%= city.id %>">
     <h2><a class="city-name" href="/cities/<%= city.id %>"><%= city.name %></a></h2>
     <div>
-    <a class="button btn btn-update" href="/cities/<%= city.id %>/edit">Update</a>
-    <form class="btn-form" action='/cities/<%= city.id %>' method="POST">
-      <input class="button btn btn-delete" type="submit" value="Delete">
-      <input type="hidden" name="_method" value="DELETE">
-    </form>
+      <a class="button btn btn-update" href="/cities/<%= city.id %>/edit">Update</a>
+      <form class="btn-form" action='/cities/<%= city.id %>' method="POST">
+        <input class="button btn btn-delete" type="submit" value="Delete"/>
+        <input type="hidden" name="_method" value="DELETE">
+      </form>
     </div>
   </div>
 <% end %>

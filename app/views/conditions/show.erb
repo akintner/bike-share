@@ -1,18 +1,18 @@
 <h1>Weather conditions for the date of <%= @condition.measurement_date %></h1>
 
-<p class="index-condition-max-temperature-f"><%= @condition.max_temperature_f %></p>
-<p class="index-condition-mean-temperature-f"><%= @condition.mean_temperature_f %></p>
-<p class="index-condition-min-temperature-f"><%= @condition.min_temperature_f %></p>
-<p class="index-condition-humidiy-percent"><%= @condition.humidity_percent %></p>
-<p class="index-condition-visibility-miles"><%= @condition.visibility_miles %></p>
-<p class="index-condition-mean-wind-speed_mph"><%= @condition.mean_wind_speed_mph %></p>
-<p class="index-condition-precipitation-inches"><%= @condition.precipitation_inches %></p>
+<p class="index-condition-max-temperature-f">Maximum temperature (F): <%= @condition.max_temperature_f %></p>
+<p class="index-condition-mean-temperature-f">Mean temperature (F): <%= @condition.mean_temperature_f %></p>
+<p class="index-condition-min-temperature-f">Minimum temperature (F): <%= @condition.min_temperature_f %></p>
+<p class="index-condition-humidiy-percent">Humidity (%): <%= @condition.humidity_percent %></p>
+<p class="index-condition-visibility-miles">Visibility (miles): <%= @condition.visibility_miles %></p>
+<p class="index-condition-mean-wind-speed_mph">Mean wind speed (mph): <%= @condition.mean_wind_speed_mph %></p>
+<p class="index-condition-precipitation-inches">Precipitation (inches): <%= @condition.precipitation_inches %></p>
 
 <form action="/conditions/<%= @condition.id %>" method="POST">
   <div class="form-group">
     <input type="hidden" name="_method" value="DELETE" />
-    <input class="button btn btn-primary" type="submit" value="Delete" />
+    <input class="button btn btn-delete" type="submit" value="Delete" />
   </div>
 </form>
 
-<p><a class="btn btn-primary button" href="/conditions/<%= @condition.id %>/edit">Update weather conditions</a></p>
+<p><a class="btn btn-update button" href="/conditions/<%= @condition.id %>/edit">Update weather conditions</a></p>
