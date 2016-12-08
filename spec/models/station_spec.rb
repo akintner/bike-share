@@ -109,4 +109,105 @@ describe "Station" do
       expect(station_date).to eq("2000-03-04")
     end
   end
+
+  context "Trip analytics" do
+    let!(:city) { City.create(name: "Denver")}
+    let!(:zipcode_1) { Zipcode.create(zipcode: 90121) }
+    let!(:zipcode_2) { Zipcode.create(zipcode: 90122) }
+    let!(:station_1) { Station.create(
+                            name: "Mission",
+                            dock_count: 30,
+                            installation_date: Date.today,
+                            city_id: city.id
+                            )}
+    let!(:station_2) { Station.create(
+                            name: "Polk Street",
+                            dock_count: 30,
+                            installation_date: Date.today,
+                            city_id: city.id
+                            )}
+
+    let!(:trip_1) { Trip.create(duration_in_seconds: 60,
+                              start_date: DateTime.new(2010,9,12),
+                              end_date: DateTime.new(2010,9,13),
+                              start_station_id: station_1.id,
+                              end_station_id: station_2.id,
+                              bike_id: 37,
+                              subscription_id: 1,
+                              zipcode_id: zipcode_1.id)}
+
+    let!(:trip_2) { Trip.create(duration_in_seconds: 60,
+                              start_date: DateTime.new(2010,9,12),
+                              end_date: DateTime.new(2010,9,13),
+                              start_station_id: station_1.id,
+                              end_station_id: station_2.id,
+                              bike_id: 37,
+                              subscription_id: 1,
+                              zipcode_id: zipcode_1.id)}
+    let!(:trip_3) { Trip.create(duration_in_seconds: 60,
+                              start_date: DateTime.new(2010,9,11),
+                              end_date: DateTime.new(2010,9,11),
+                              start_station_id: station_1.id,
+                              end_station_id: station_2.id,
+                              bike_id: 37,
+                              subscription_id: 1,
+                              zipcode_id: zipcode_1.id)}
+
+    let!(:trip_4) { Trip.create(duration_in_seconds: 60,
+                              start_date: DateTime.new(2010,9,10),
+                              end_date: DateTime.new(2010,9,10),
+                              start_station_id: station_1.id,
+                              end_station_id: station_2.id,
+                              bike_id: 38,
+                              subscription_id: 1,
+                              zipcode_id: zipcode_2.id)}
+
+    let!(:trip_5) { Trip.create(duration_in_seconds: 60,
+                              start_date: DateTime.new(2010,9,10),
+                              end_date: DateTime.new(2010,9,10),
+                              start_station_id: station_2.id,
+                              end_station_id: station_2.id,
+                              bike_id: 38,
+                              subscription_id: 1,
+                              zipcode_id: zipcode_2.id)}
+
+    it "can find number of rides started at a station" do
+
+      expect(station_1).to be_valid
+      expect(trip_1).to be_valid
+
+      rides_1 = station_1.number_of_rides_started_at_station
+      expect(rides_1).to eq(4)
+    end
+
+    it "can find number of rides end at a station" do
+      rides_2 = station_2.number_of_rides_ended_at_station
+
+      expect(rides_2).to eq(5)
+    end
+
+    it "can find the most frequent destination station" do
+      expect(station_1.most_frequent_destination_station).to eq(station_2.name)
+    end
+
+    it "can find the most frequent origination station" do
+      expect(station_2.most_frequent_origination_station).to eq(station_1.name)
+    end
+
+    it "can find date with highest number of trips started at station" do
+      expect(station_1.date_with_most_trips).to eq("09/12/2010")
+    end
+
+    it "can find the most frequent user zipcode" do
+      expect(station_1.frequent_user_zipcode).to eq(90121)
+    end
+
+    it "can find the most used bike" do
+      expect(station_1.most_used_bike).to eq(37)
+    end
+
+    it "can find totatl rides for most used bike" do
+      expect(station_1.most_used_bike_total_rides).to eq(3)
+    end
+  end
 end
