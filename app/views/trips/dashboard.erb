@@ -1,37 +1,50 @@
-<h1>Trip Dashboard</h1>
+<h1 class="dashboard-title trips-dashboard-title">Trip Dashboard</h1>
 
+<div class="row">
+<div class="col-md-3">
 <div class="trips-dashboard-total">
-<h2>Total Number of Trips</h2>
-<p><%= @trips.total %></p>
+  <h4>Total Number of Trips</h4>
+  <p><%= @trips.total %></p>
+</div>
 </div>
 
+<div class="col-md-3">
 <div class="trips-dashboard-average">
-<h2>Average Duration of a Ride</h2>
-<p class="trip-dashboard-average"><%= @trips.average_duration_of_ride %></p>
+  <h4>Average Duration of a Ride</h4>
+  <p class="trip-dashboard-average"><%= @trips.average_duration_of_ride %></p>
+</div>
 </div>
 
+<div class="col-md-3">
 <div class="trips-dashboard-max">
-<h2>Longest Ride</h2>
-<p><%= @trips.longest_ride %></p>
+  <h4>Longest Ride</h4>
+  <p class="dashboard-stat"><%= @trips.longest_ride %></p>
+</div>
 </div>
 
+<div class="col-md-3">
 <div class="trips-dashboard-min">
-<h2>Shortest Ride</h2>
-<p><%= @trips.shortest_ride %></p>
+  <h4>Shortest Ride</h4>
+  <p class="dashboard-stat"><%= @trips.shortest_ride %></p>
+</div>
 </div>
 
+<div class="col-md-3">
 <div class="trips-dashboard-most-rides-starting">
-<h2>Station with Most Rides Starting There</h2>
-<p><%= @trips.most_rides_starting %></p>
+  <h4>Station with Most Rides Starting There</h4>
+  <p><%= @trips.most_rides_starting %></p>
+</div>
 </div>
 
+<div class="col-md-3">
 <div class="trips-dashboard-most-rides-ending">
-<h2>Station with Most Rides Ending There</h2>
-<p><%= @trips.most_rides_ending %></p>
+  <h4>Station with Most Rides Ending There</h4>
+  <p><%= @trips.most_rides_ending %></p>
+</div>
 </div>
 
 <div class="trips-dashboard-rides-per-year">
-<h2>Rides Per Month Each Year</h2>
+<h4>Rides Per Month Each Year</h4>
 <p><%= @trips.rides_per_year(2013) %><br?></p>
   <ul>
     <li>January: <%= @trips.rides_per_month(1) %></li>
@@ -95,29 +108,30 @@
 </div>
 
 <div class="trips-dashboard-most-ridden-bike">
-<h2>Most Ridden Bike</h2>
+<h4>Most Ridden Bike</h4>
 <p><%= @trips.most_ridden_bike %></p>
 </div>
 
 <div class="trips-dashboard-least-ridden-bike">
-<h2>Least Ridden Bike</h2>
-<p><%= @trips.least_ridden_bike%></p>
+<h4>Least Ridden Bike</h4>
+<p><%= @trips.least_ridden_bike %></p>
 </div>
 
 <div class="trips-dashboard-user-subscription">
-<h2>User Subscription Stats</h2>
-<p>Type: <%= @trips.number_customers %> Percentage of Total: <%= @trips.user_percentage("Customer") %></p>
-<p>Type: <%= @trips.number_subscribers %> Percentage of Total: <%= @trips.user_percentage("Subscriber") %></p>
+<h4>User Subscription Stats</h4>
+<p>Type: <%= @trips.number_customers %></p>
+<p>Type: <%= @trips.number_subscribers %></p>
+<p><%= @trips.user_percentage %></p>
 </div>
 
 <div class="trips-dashboard-highest-trip-date">
-<h2>Date with Highest Number of Trip</h2>
-<p><%= @trips.highest_trip_date %></p>
+<h4>Date with Highest Number of Trip</h4>
+<p><%= @trips.show_highest_trip_date %></p>
 </div>
 
 <div class="trips-dashboard-lowest-trip-date">
-<h2>Date with Lowest Number of Trips</h2>
-<p><%= @trips.lowest_trip_date %></p>
+<h4>Date with Lowest Number of Trips</h4>
+<p><%= @trips.show_lowest_trip_date %></p>
 </div>
 
 
