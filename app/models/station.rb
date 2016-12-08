@@ -5,8 +5,8 @@ class Station < ActiveRecord::Base
   validates :city_id, presence:true
 
   belongs_to :city
-  has_many :start_stations, :class_name => 'Trip', :foreign_key => 'start_station_id'
-  has_many :end_stations,   :class_name => 'Trip', :foreign_key => 'end_station_id'
+  has_many :trip_departures, :class_name => 'Trip', :foreign_key => 'start_station_id'
+  has_many :trip_arrivals,   :class_name => 'Trip', :foreign_key => 'end_station_id'
 
   def self.total
     Station.count
@@ -54,31 +54,40 @@ class Station < ActiveRecord::Base
   end
 
   def number_of_rides_started_at_station
-    1
+    self.trip_departures.count
   end
 
   def number_of_rides_ended_at_station
-    1
+    self.trip_arrivals.count
   end
 
   def most_frequent_destination_station
-    1
+    trips = self.trip_departures.group(:end_station).count
+    trips.first[0].name
   end
 
   def most_frequent_origination_station
-    1
+    trips = self.trip_arrivals.group(:start_station).count
+    trips.first[0].name
   end
 
   def date_with_most_trips
-    1
+    trips = self.trip_departures.group(:start_date).count
+    trips.first[0].strftime('%m/%d/%Y')
   end
 
   def frequent_user_zipcode
-    1
+    zipcodes = self.trip_departures.group(:zipcode).count
+    zipcodes.first[0].zipcode
   end
 
   def most_used_bike
-    1
+    bikes = self.trip_departures.group(:bike_id).count
+    bikes.first[0]
   end
 
+  def most_used_bike_total_rides
+    bikes = self.trip_departures.group(:bike_id).count
+    bikes.first[1]
+  end
 end

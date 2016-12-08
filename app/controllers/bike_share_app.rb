@@ -6,6 +6,10 @@ class BikeShareApp < Sinatra::Base
   set :method_override, true
   include WillPaginate::Sinatra::Helpers
 
+  get '/stations' do
+    redirect '/stations/?page=1'
+  end
+
   get '/stations/' do
     @stations = Station.paginate(:page => params[:page], :per_page => 30)
     erb :"/stations/index"
@@ -85,6 +89,10 @@ class BikeShareApp < Sinatra::Base
     redirect "/cities"
   end
 
+  get '/trips' do
+    redirect "/trips/?page=1"
+  end
+
   get '/trips/' do
     @stations = Station.all
     @trips = Trip.paginate(:page => params[:page], :per_page => 30)
@@ -128,6 +136,10 @@ class BikeShareApp < Sinatra::Base
   delete '/trips/:id' do
     Trip.destroy(params[:id])
     redirect '/trips'
+  end
+
+  get '/conditions' do
+    redirect '/conditions/?page=1'
   end
 
   get '/conditions/' do

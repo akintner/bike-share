@@ -31,7 +31,7 @@ describe "When a user want to delete a trip" do
       visit "/trips/#{trip.id}"
       click_on "Delete"
 
-      expect(page).to have_current_path "/trips"
+      expect(page).to have_current_path "/trips/?page=1"
       expect(page).not_to have_content "60"
     end
   end
@@ -52,7 +52,7 @@ describe "When a user want to delete a trip" do
       station_2.city = city
       station_1.save
       station_2.save
-      
+
       subscription = Subscription.create(name: "Customer")
 
       trip_1 = Trip.create(duration_in_seconds: 60,
@@ -76,13 +76,13 @@ describe "When a user want to delete a trip" do
       trip_2.subscription = subscription
       trip_1.save
       trip_2.save
-
       visit "/trips"
+      # save_and_open_page
       within('#trip_' + "#{trip_2.id}") do
         click_on("Delete")
       end
 
-      expect(page).to have_current_path "/trips"
+      expect(page).to have_current_path "/trips/?page=1"
       expect(page).to have_content 60
       expect(page).not_to have_content 120
     end
