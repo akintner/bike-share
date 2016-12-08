@@ -23,7 +23,7 @@ class Condition < ActiveRecord::Base
   def self.rides_by_temperature
     a = Trip.where(end_date: @temp_range).count
     b = Trip.where(start_date: @temp_range).count
-    
+    highest = Trip.where(end_date: @temp_range)
     all = a + b
   end
 
