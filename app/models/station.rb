@@ -53,4 +53,32 @@ class Station < ActiveRecord::Base
     station.installation_date
   end
 
+  def number_of_rides_started_at_station
+    1
+  end
+
+  def number_of_rides_ended_at_station
+    1
+  end
+
+  def most_frequent_destination_station
+    1
+  end
+
+  def most_frequent_origination_station
+    1
+  end
+
+  def date_with_most_trips
+    1
+  end
+
+  def frequent_user_zipcode
+    1
+  end
+
+  def most_used_bike
+    1
+  end
+
 end
