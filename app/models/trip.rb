@@ -20,7 +20,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.average_duration_of_ride
-    self.average("duration_in_seconds").to_f.round(0)
+    self.average("duration_in_seconds").to_f.round(3)
   end
 
   def self.longest_ride
@@ -39,18 +39,18 @@ class Trip < ActiveRecord::Base
 
   def self.most_rides_ending
     most = self.select("end_station_id").group("end_station_id").count
-    station = Station.find(most[most.invert.values.max])
+    station = Station.find(most.invert.values.max)
     "#{station.name} = #{most.values.max}"
   end
 
   def self.rides_per_month(month)
     given_month = Trip.where('extract(month FROM end_date)= ?', month)
-    "#{month} = #{given_month.count}"   
+    "#{given_month.count}"   
   end
 
   def self.rides_per_year(year)
     given_year = Trip.where('extract(year FROM end_date)= ?', year)
-    "#{year} = #{given_year.count}"
+    "#{given_year.count}"
   end
 
   def self.most_ridden_bike

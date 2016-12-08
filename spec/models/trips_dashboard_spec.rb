@@ -4,28 +4,30 @@ require 'pry'
  describe "Trip" do
    context "analytics" do
      let!(:start_station) { Station.create(name: "Starter", dock_count: 11, installation_date: Date.today) }
-     let!(:end_station) { Station.create(name: "Finisher", dock_count: 11, installation_date: Date.today) }
+     let!(:end_station) { Station.create(name: "Finisher", dock_count: 17, installation_date: Date.today) }
      let!(:subscription) {Subscription.create(name: "Customer")}
      let!(:subscription) {Subscription.create(name: "Subscriber")}
-     let!(:zipcode) {Zipcode.create(zipcode: 81753)}
+     
+    before do 
+       Trip.create(duration_in_seconds: 187, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 1, bike_id: 17, subscription_id: 1, zipcode_id: 1)
+       Trip.create(duration_in_seconds: 69, start_date: "September 19, 1989", end_date: "September 19, 1989", start_station_id: 1, end_station_id: 2, bike_id: 7, subscription_id: 1, zipcode_id: 1)
+       Trip.create(duration_in_seconds: 271, start_date: "September 29, 1989", end_date: "September 29, 1989", start_station_id: 1, end_station_id: 1, bike_id: 17, subscription_id: 1, zipcode_id: 1)
+       Trip.create(duration_in_seconds: 560, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 2, end_station_id: 1, bike_id: 9, subscription_id: 1, zipcode_id: 1)
+       Trip.create(duration_in_seconds: 363, start_date: "September 19, 1989", end_date: "September 19, 1989", start_station_id: 2, end_station_id: 2, bike_id: 9, subscription_id: 1, zipcode_id: 1)
+       Trip.create(duration_in_seconds: 561, start_date: "September 19, 1989", end_date: "September 19, 1989", start_station_id: 2, end_station_id: 1, bike_id: 9, subscription_id: 1, zipcode_id: 1)
+    end
 
      it "can find total count of trips" do
-       trip1 = Trip.new(duration_in_seconds: 187, start_date: "September 9, 1989", end_date: "September 9, 1989", bike_id: 17, subscription_id: 1, zipcode_id: 1)
-       trip2 = Trip.new(duration_in_seconds: 69, start_date: "September 9, 1989", end_date: "September 9, 1989", bike_id: 17, subscription_id: 0, zipcode_id: 1)
-       trip1.start_station = start_station
-       trip1.end_station = end_station
-       trip2.start_station = start_station
-       trip2.end_station = end_station
-       trip1.save
-       trip2.save
+      #  trip1 = Trip.new(duration_in_seconds: 187, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 1, bike_id: 17, subscription_id: 1, zipcode_id: 1)
+      #  trip2 = Trip.new(duration_in_seconds: 69, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 2, bike_id: 17, subscription_id: 0, zipcode_id: 1)
 
        expect(Trip.total).to eq(2)
      end
  
      it "can find average duration of a ride" do
-       Trip.create(duration_in_seconds: 187, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 1, bike_id: 17, subscription_id: 1, zipcode_id: 1)
-       Trip.create(duration_in_seconds: 69, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 2, end_station_id: 1, bike_id: 17, subscription_id: 1, zipcode_id: 1)
-       Trip.create(duration_in_seconds: 271, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 2, bike_id: 17, subscription_id: 1, zipcode_id: 1)
+      #  Trip.create(duration_in_seconds: 187, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 1, bike_id: 17, subscription_id: 1, zipcode_id: 1)
+      #  Trip.create(duration_in_seconds: 69, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 2, end_station_id: 1, bike_id: 17, subscription_id: 1, zipcode_id: 1)
+      #  Trip.create(duration_in_seconds: 271, start_date: "September 9, 1989", end_date: "September 9, 1989", start_station_id: 1, end_station_id: 2, bike_id: 17, subscription_id: 1, zipcode_id: 1)
  
        expect(Trip.average_duration_of_ride).to eq(176)
      end

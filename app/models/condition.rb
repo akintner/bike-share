@@ -10,6 +10,10 @@ class Condition < ActiveRecord::Base
   validates :precipitation_inches, presence: true
   validates :measurement_date, presence: true
   
+  def present_date
+    measurement_date.strftime('%b %e, %Y')
+  end
+
   def self.average_rides(arg)
     (arg / Trip.count).round(4)
   end
@@ -17,13 +21,12 @@ class Condition < ActiveRecord::Base
   def self.highest_rides(arg)
   end
 
-  def self.lowest_rides(arg)
+  def self.lowest_rides
   end
 
   def self.rides_by_temperature
     a = Trip.where(end_date: @temp_range).count
     b = Trip.where(start_date: @temp_range).count
-    highest = Trip.where(end_date: @temp_range)
     all = a + b
   end
 

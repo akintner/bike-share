@@ -53,4 +53,34 @@ class Station < ActiveRecord::Base
     station.installation_date
   end
 
+  def self.number_rides_started_at_station(station)
+    Trip.where(start_station_id: station).count
+  end
+
+  def self.number_rides_ended_at_station(station)
+    Trip.where(end_station_id: station).count
+  end
+
+  def self.station_with_most_rides_as_start_location(station)
+    destination_station_id = Trip.where(start_station_id: station).group(:end_station_id).count("id").max_by{|bike, count| count }
+    Station.where(id: destination_station_id).pluck(:name)
+  end
+
+  def self.station_with_most_rides_as_end_location(station)
+    origin_station_id = Trip.where(start_station_id: station).group(:start_station_id).count("id").max_by{|bike, count| count }
+    Station.where(id: origin_station_id).pluck(:name)
+  end
+
+  def self.date_with_highest_number_trips(station)
+    Trip.where(start_station_id: station).group(:start_date).count("id").max_by{|date, count| count }
+  end
+
+  def self.most_frequent_user_zip_code(station)
+    Trip.where(start_station_id: station).group(:user_zip_code).count("id").max_by{|zip_code, count| count }
+  end
+
+  def self.most_frequent_bike_id(station)
+    Trip.where(start_station_id: station).group(:bike_id).count("id").max_by{|bike, count| count }
+  end
+
 end
