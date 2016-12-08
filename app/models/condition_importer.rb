@@ -11,6 +11,9 @@ class ConditionImporter
     bar = ProgressBar.create(title: "Conditions", total: number_of_lines)
 
     CSV.foreach(filename, headers: true) do |row|
+
+      next unless row['zip_code'] == '94107'
+
       measurement_date     = to_date(row['date'])
       max_temperature_f    = get_float(row['max_temperature_f'])
       mean_temperature_f   = get_float(row['mean_temperature_f'])
@@ -19,8 +22,6 @@ class ConditionImporter
       visibility_miles     = get_float(row['mean_visibility_miles'])
       mean_wind_speed_mph  = get_float(row['mean_wind_speed_mph'])
       precipitation_inches = get_float(row['precipitation_inches'])
-
-
 
       condition = Condition.new(
         measurement_date:     measurement_date,
@@ -32,8 +33,6 @@ class ConditionImporter
         mean_wind_speed_mph:  mean_wind_speed_mph,
         precipitation_inches: precipitation_inches
       )
-
-
 
       condition.save if condition.valid?
 

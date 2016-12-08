@@ -7,11 +7,13 @@ class Trip < ActiveRecord::Base
   validates :start_station,       presence: true
   validates :end_station,         presence: true
   validates :bike_id,             presence: true
-  validates :subscription_type,   presence: true
+  validates :subscription_id,     presence: true
   validates :zipcode_id,          presence: true
 
   belongs_to :start_station, :class_name => "Station", :foreign_key => "start_station_id"
   belongs_to :end_station,   :class_name => "Station", :foreign_key => "end_station_id"
+  belongs_to :subscription
+  belongs_to :zipcode
 
   def self.total
     Trip.count
@@ -66,11 +68,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.number_customers
-    "Customers = #{self.where(subscription_type: 0).count}"
+    "Customers = #{self.where(subscription_id: 0).count}"
   end
 
   def self.number_subscribers
-    "Subscribers = #{self.where(subscription_type: 1).count}"
+    "Subscribers = #{self.where(subscription_id: 1).count}"
   end
 
   # def self.user_percentage(user_type)
@@ -90,7 +92,6 @@ class Trip < ActiveRecord::Base
 
   def self.weather_on_highest_trip_date
     conditions = Condition.find_by(measurement_date: highest_trip_date)
-    binding.pry
     conditions.id
   end
 
@@ -99,4 +100,7 @@ class Trip < ActiveRecord::Base
     conditions.id
   end
 
+  def subscription_name
+    subscription.name
+  end
 end

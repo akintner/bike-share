@@ -26,6 +26,12 @@
   float: right;
 }
 
+.wrapper {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 /* ~~~~~~~ LAYOUT ~~~~~~~*/
 body {
   background: #B993D6; /* fallback for old browsers */
@@ -194,3 +200,14 @@ p.station-coordinates {}
 
   /*station edit*/
   .edit-station-page-title {}
+
+
+
+/*~~~~~~~~ MEDIA QUERIES ~~~~~~~~~*/
+
+  @media screen and (max-width: 993px) {
+    .wrapper {
+      width: 80%;
+    }
+  }
+

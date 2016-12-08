@@ -84,6 +84,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips' do
     @trips = Trip.all
+    @stations = Station.all
     erb :"/trips/index"
   end
 
@@ -93,11 +94,13 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    trip = Trip.create(params[:trip])
     station1 = Station.find(params[:trip][:start_station_id])
     station2 = Station.find(params[:trip][:end_station_id])
+    subscription = Subscription.find_by(name: params[:subscription][:name])
+    trip = Trip.new(params[:trip])
     trip.start_station_id = station1.id
     trip.end_station_id = station2.id
+    trip.subscription = subscription
     trip.save!
     redirect "/trips/#{trip.id}"
   end
@@ -148,7 +151,24 @@ class BikeShareApp < Sinatra::Base
     erb :"/conditions/show"
   end
 
-  get '/conditions-dashboard' do
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/edit"
+  end
+
+  put '/conditions/:id' do
+    condition = Condition.find(params[:id])
+    condition.update(params[:condition])
+    redirect "/conditions/#{condition.id}"
+  end
+
+  delete '/conditions/:id' do
+    condition = Condition.find(params[:id])
+    condition.destroy
+    redirect "/conditions"
+  end
+
+   get '/conditions-dashboard' do
     @conditions = Condition.all
     erb :"/conditions/dashboard"
   end
