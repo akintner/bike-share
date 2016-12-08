@@ -11,127 +11,138 @@
 <div class="col-md-3">
 <div class="trips-dashboard-average">
   <h4>Average Duration of a Ride</h4>
-  <p class="trip-dashboard-average"><%= @trips.average_duration_of_ride %></p>
+  <p><%= @trips.average_duration_of_ride %></p>
 </div>
 </div>
 
 <div class="col-md-3">
 <div class="trips-dashboard-max">
   <h4>Longest Ride</h4>
-  <p class="dashboard-stat"><%= @trips.longest_ride %></p>
+  <p><%= @trips.longest_ride %></p>
 </div>
 </div>
 
 <div class="col-md-3">
 <div class="trips-dashboard-min">
   <h4>Shortest Ride</h4>
-  <p class="dashboard-stat"><%= @trips.shortest_ride %></p>
+  <p><%= @trips.shortest_ride %></p>
+</div>
 </div>
 </div>
 
-<div class="col-md-3">
+<div class="row">
+<div class="col-md-6">
 <div class="trips-dashboard-most-rides-starting">
   <h4>Station with Most Rides Starting There</h4>
   <p><%= @trips.most_rides_starting %></p>
 </div>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-6">
 <div class="trips-dashboard-most-rides-ending">
   <h4>Station with Most Rides Ending There</h4>
   <p><%= @trips.most_rides_ending %></p>
 </div>
 </div>
+</div>
 
+
+<div class="row">
 <div class="trips-dashboard-rides-per-year">
-<h4>Rides Per Month Each Year</h4>
-<p><%= @trips.rides_per_year(2013) %><br?></p>
+<h3>Rides Per Month Each Year</h3>
+<div class="col-md-4">
+<h4>2013: <%= @trips.rides_per_year(2013) %></h4>
   <ul>
-    <li>January: <%= @trips.rides_per_month(1) %></li>
-    <li>February: <%= @trips.rides_per_month(2) %></li>
-    <li>March:<%= @trips.rides_per_month(3) %></li>
-    <li>April: <%= @trips.rides_per_month(4) %></li>
-    <li>May: <%= @trips.rides_per_month(5) %></li>
-    <li>June: <%= @trips.rides_per_month(6) %></li>
-    <li>July: <%= @trips.rides_per_month(7) %></li>
-    <li>August: <%= @trips.rides_per_month(8) %></li>
-    <li>September: <%= @trips.rides_per_month(9) %></li>
-    <li>October: <%= @trips.rides_per_month(10) %></li>
-    <li>November: <%= @trips.rides_per_month(11) %></li>
-    <li>December: <%= @trips.rides_per_month(12) %></li>
-  </ul>
-<p><%= @trips.rides_per_year(2014) %><br?></p>
-  <ul>
-    <li>January: <%= @trips.rides_per_month(1) %></li>
-    <li>February: <%= @trips.rides_per_month(2) %></li>
-    <li>March:<%= @trips.rides_per_month(3) %></li>
-    <li>April: <%= @trips.rides_per_month(4) %></li>
-    <li>May: <%= @trips.rides_per_month(5) %></li>
-    <li>June: <%= @trips.rides_per_month(6) %></li>
-    <li>July: <%= @trips.rides_per_month(7) %></li>
-    <li>August: <%= @trips.rides_per_month(8) %></li>
-    <li>September: <%= @trips.rides_per_month(9) %></li>
-    <li>October: <%= @trips.rides_per_month(10) %></li>
-    <li>November: <%= @trips.rides_per_month(11) %></li>
-    <li>December: <%= @trips.rides_per_month(12) %></li>
-  </ul>
-<p><%= @trips.rides_per_year(2015) %><br?></p>
-  <ul>
-    <li>January: <%= @trips.rides_per_month(1) %></li>
-    <li>February: <%= @trips.rides_per_month(2) %></li>
-    <li>March:<%= @trips.rides_per_month(3) %></li>
-    <li>April: <%= @trips.rides_per_month(4) %></li>
-    <li>May: <%= @trips.rides_per_month(5) %></li>
-    <li>June: <%= @trips.rides_per_month(6) %></li>
-    <li>July: <%= @trips.rides_per_month(7) %></li>
-    <li>August: <%= @trips.rides_per_month(8) %></li>
-    <li>September: <%= @trips.rides_per_month(9) %></li>
-    <li>October: <%= @trips.rides_per_month(10) %></li>
-    <li>November: <%= @trips.rides_per_month(11) %></li>
-    <li>December: <%= @trips.rides_per_month(12) %></li>
-  </ul>
-<p><%= @trips.rides_per_year(2016) %><br?></p>
-  <ul>
-    <li>January: <%= @trips.rides_per_month(1) %></li>
-    <li>February: <%= @trips.rides_per_month(2) %></li>
-    <li>March:<%= @trips.rides_per_month(3) %></li>
-    <li>April: <%= @trips.rides_per_month(4) %></li>
-    <li>May: <%= @trips.rides_per_month(5) %></li>
-    <li>June: <%= @trips.rides_per_month(6) %></li>
-    <li>July: <%= @trips.rides_per_month(7) %></li>
-    <li>August: <%= @trips.rides_per_month(8) %></li>
-    <li>September: <%= @trips.rides_per_month(9) %></li>
-    <li>October: <%= @trips.rides_per_month(10) %></li>
-    <li>November: <%= @trips.rides_per_month(11) %></li>
-    <li>December: <%= @trips.rides_per_month(12) %></li>
+    <li>January: <%= @trips.rides_per_month(1, 2013) %></li>
+    <li>February: <%= @trips.rides_per_month(2, 2013) %></li>
+    <li>March:<%= @trips.rides_per_month(3, 2013) %></li>
+    <li>April: <%= @trips.rides_per_month(4, 2013) %></li>
+    <li>May: <%= @trips.rides_per_month(5, 2013) %></li>
+    <li>June: <%= @trips.rides_per_month(6, 2013) %></li>
+    <li>July: <%= @trips.rides_per_month(7, 2013) %></li>
+    <li>August: <%= @trips.rides_per_month(8, 2013) %></li>
+    <li>September: <%= @trips.rides_per_month(9, 2013) %></li>
+    <li>October: <%= @trips.rides_per_month(10, 2013) %></li>
+    <li>November: <%= @trips.rides_per_month(11, 2013) %></li>
+    <li>December: <%= @trips.rides_per_month(12, 2013) %></li>
   </ul>
 </div>
+<div class="col-md-4">
+<h4>2014: <%= @trips.rides_per_year(2014) %><br?></h4>
+  <ul>
+    <li>January: <%= @trips.rides_per_month(1, 2014) %></li>
+    <li>February: <%= @trips.rides_per_month(2, 2014) %></li>
+    <li>March:<%= @trips.rides_per_month(3, 2014) %></li>
+    <li>April: <%= @trips.rides_per_month(4, 2014) %></li>
+    <li>May: <%= @trips.rides_per_month(5, 2014) %></li>
+    <li>June: <%= @trips.rides_per_month(6, 2014) %></li>
+    <li>July: <%= @trips.rides_per_month(7, 2014) %></li>
+    <li>August: <%= @trips.rides_per_month(8, 2014) %></li>
+    <li>September: <%= @trips.rides_per_month(9, 2014) %></li>
+    <li>October: <%= @trips.rides_per_month(10, 2014) %></li>
+    <li>November: <%= @trips.rides_per_month(11, 2014) %></li>
+    <li>December: <%= @trips.rides_per_month(12, 2014) %></li>
+  </ul>
+</div>
+<div class="col-md-4">
+<h4>2015: <%= @trips.rides_per_year(2015) %></h4>
+  <ul>
+    <li>January: <%= @trips.rides_per_month(1, 2015) %></li>
+    <li>February: <%= @trips.rides_per_month(2, 2015) %></li>
+    <li>March:<%= @trips.rides_per_month(3, 2015) %></li>
+    <li>April: <%= @trips.rides_per_month(4, 2015) %></li>
+    <li>May: <%= @trips.rides_per_month(5, 2015) %></li>
+    <li>June: <%= @trips.rides_per_month(6, 2015) %></li>
+    <li>July: <%= @trips.rides_per_month(7, 2015) %></li>
+    <li>August: <%= @trips.rides_per_month(8, 2015) %></li>
+    <li>September: <%= @trips.rides_per_month(9, 2015) %></li>
+    <li>October: <%= @trips.rides_per_month(10, 2015) %></li>
+    <li>November: <%= @trips.rides_per_month(11, 2015) %></li>
+    <li>December: <%= @trips.rides_per_month(12, 2015) %></li>
+  </ul>
+</div>
+</div>
+</div>
 
+<div class="row">
+<div class="col-md-4">
 <div class="trips-dashboard-most-ridden-bike">
-<h4>Most Ridden Bike</h4>
-<p><%= @trips.most_ridden_bike %></p>
+  <h4>Most Ridden Bike</h4>
+  <p><%= @trips.most_ridden_bike %></p>
+</div>
 </div>
 
+<div class="col-md-4">
 <div class="trips-dashboard-least-ridden-bike">
-<h4>Least Ridden Bike</h4>
-<p><%= @trips.least_ridden_bike %></p>
+  <h4>Least Ridden Bike</h4>
+  <p><%= @trips.least_ridden_bike %></p>
+</div>
 </div>
 
+<div class="col-md-4">
 <div class="trips-dashboard-user-subscription">
-<h4>User Subscription Stats</h4>
-<p>Type: <%= @trips.number_customers %></p>
-<p>Type: <%= @trips.number_subscribers %></p>
+  <h4>User Subscription Stats</h4>
+  <p>Type: <%= @trips.number_customers %></p>
+  <p>Type: <%= @trips.number_subscribers %></p>
 <p><%= @trips.user_percentage %></p>
 </div>
-
-<div class="trips-dashboard-highest-trip-date">
-<h4>Date with Highest Number of Trip</h4>
-<p><%= @trips.show_highest_trip_date %></p>
+</div>
 </div>
 
+<div class="row">
+<div class="col-md-6">
+<div class="trips-dashboard-highest-trip-date">
+  <h4>Date with Highest Number of Trip</h4>
+  <p><%= @trips.show_highest_trip_date %></p>
+</div>
+</div>
+
+<div class="col-md-6">
 <div class="trips-dashboard-lowest-trip-date">
-<h4>Date with Lowest Number of Trips</h4>
-<p><%= @trips.show_lowest_trip_date %></p>
+  <h4>Date with Lowest Number of Trips</h4>
+  <p><%= @trips.show_lowest_trip_date %></p>
+</div>
+</div>
 </div>
 
 

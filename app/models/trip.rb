@@ -43,8 +43,9 @@ class Trip < ActiveRecord::Base
     "#{station.name} = #{most.values.max}"
   end
 
-  def self.rides_per_month(month)
-    given_month = Trip.where('extract(month FROM end_date)= ?', month)
+  def self.rides_per_month(month, year)
+    given_year = Trip.where('extract(year FROM end_date)= ?', year)
+    given_month = given_year.where('extract(month FROM end_date)= ?', month)
     "#{given_month.count}"   
   end
 
