@@ -6,7 +6,7 @@ class Trip < ActiveRecord::Base
   validates :end_date,            presence: true
   validates :start_station,       presence: true
   validates :end_station,         presence: true
-  validates :bike_id,             presence: true
+  # validates :bike_id,             presence: true
   validates :subscription_id,     presence: true
   validates :zipcode_id,          presence: true
 
@@ -68,21 +68,31 @@ class Trip < ActiveRecord::Base
   end
 
   def self.number_customers
-    "Customers = #{self.where(subscription_id: 0).count}"
+    hash = self.group(:subscription_id).count
+    customer_id = Subscription.find_by(name: "Customer").id
+    "Customers = #{hash[customer_id]}"
   end
 
   def self.number_subscribers
-    "Subscribers = #{self.where(subscription_id: 1).count}"
+    hash = self.group(:subscription_id).count
+    subscriber_id = Subscription.find_by(name: "Subscriber").id
+    "Subscribers = #{hash[subscriber_id]}"
   end
 
-  # def self.user_percentage(user_type)
-  #   user_type.to_i
-  #   (self.where(subscription_type: user_type).count) / Trip.count
-  # end
+  def self.user_percentage
+    hash = self.group(:subscription_id).count
+    customer_id = Subscription.find_by(name: "Customer").id
+    subscriber_id = Subscription.find_by(name: "Subscriber").id
+    "Customer Percentage: #{((hash[customer_id]) / Trip.count.to_f).round(2)*100} and Subscriber Percentage: #{((hash[subscriber_id]) / Trip.count.to_f).round(2)*100}"
+  end
 
   def self.highest_trip_date
     most = self.select("end_date").group("end_date").count
     most.invert[most.values.max]
+  end
+
+  def self.show_highest_trip_date
+    self.highest_trip_date.strftime('%b %d, %Y')
   end
 
   def self.lowest_trip_date
@@ -90,14 +100,18 @@ class Trip < ActiveRecord::Base
     least.invert[least.values.min]
   end
 
+  def self.show_lowest_trip_date
+    self.lowest_trip_date.strftime('%b %d, %Y')
+  end
+
   def self.weather_on_highest_trip_date
-    conditions = Condition.find_by(measurement_date: highest_trip_date)
-    conditions.id
+    conditions = Condition.find_by(measurement_date: highest_trip_date.to_date)
+    "Mean Temp in F: #{conditions.mean_temperature_f }"
   end
 
   def self.weather_on_worst_trip_date
-    conditions = Condition.find_by(measurement_date: lowest_trip_date)
-    conditions.id
+    conditions = Condition.find_by(measurement_date: lowest_trip_date.to_date)
+    "Precipitation in Inches: #{conditions.precipitation_inches}"
   end
 
   def subscription_name

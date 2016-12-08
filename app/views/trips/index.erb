@@ -29,15 +29,9 @@
       <td><%= trip.bike_id%></td>
       <td><%= trip.subscription_id%></td>
       <td><%= trip.zipcode_id%></td>
-<<<<<<< HEAD
       <td><form class="btn-form" id="trip_<%= trip.id %>" action="/trips/<%=trip.id%>" method="POST">
         <input class="button btn btn-delete" type="hidden" name="_method" value="DELETE">
         <input id="delete_trip" type="submit" value="Delete"/>
-=======
-      <td><form id="trip_<%= trip.id %>" action="/trips/<%=trip.id%>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input id="delete_trip" class= "btn button btn-delete" type="submit" value="Delete"/>
->>>>>>> master
       </form></td>
       <td><a id="Update_<%= trip.id %>" class="btn btn-update button" href="/trips/<%=trip.id%>/edit"> Update Trip<a/></td>
     </tr>

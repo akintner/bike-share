@@ -29,7 +29,7 @@ describe "When a user wants to delete the weather conditions for a day" do
       visit "/conditions/#{condition_1.id}"
       click_on 'Delete'
 
-      expect(page).to have_current_path('/conditions')
+      expect(page).to have_current_path('/conditions/?page=1')
       expect(page).not_to have_content(today_formatted)
     end
   end
@@ -63,7 +63,7 @@ describe "When a user wants to delete the weather conditions for a day" do
         click_on 'Delete'
       end
 
-      expect(page).to have_current_path('/conditions')
+      expect(page).to have_current_path('/conditions/?page=1')
       expect(page).not_to have_content(yesterday_formatted)
     end
   end
